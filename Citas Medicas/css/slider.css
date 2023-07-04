@@ -1,0 +1,70 @@
+.slider {
+  position: relative;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+}
+
+.slick-slide {
+  display: none;
+}
+
+.slick-active {
+  display: block;
+}
+
+/* Estilos de las flechas de navegación */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  color: #fff;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+/* Estilos de los puntos de navegación */
+.slick-dots {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots li button {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #fff;
+}
