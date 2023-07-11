@@ -1,0 +1,113 @@
+ JUGADOR Y PLATAFORMAS
+Class Jugador
+Es una clase abstracta de la cual heredan Cup y Cup Muerto. Implementa los métodos generales como mover, getPosx y getPosy. 
+Class Cup
+Es la clase que crea a los jugadores, aquí se implementa la lógica del jugador, como se mueve, salta, si colisiona con algún Boss o Bala, cuando muera, cuando se active su poder, cuando dispare y las diferentes acciones que hará el jugador en el juego.
+Class Cup Muerto
+Es la clase que se genera cuando el jugador muere, solo tiene un tiempo límite para existir y que su compañero lo reviva, sino se eliminará por completo, en caso el compañero pueda revivirlo volverá a ser un jugador. 
+MAPA 2
+Es el nivel donde los jugadores enfrentan a Rumor Honeybottoms, este mapa es más dinámico que el Mapa 1 porque en este las plataformas tienen un desplazamiento.
+Estas plataformas serán generadas aleatoriamente y se eliminarán al salir de pantalla para volver a generarse al inicio de pantalla, hasta que se derrote al Boss. 
+Class Plataforma
+Es un objeto del juego que interactúa con el jugador para poder caminar o saltar sobre él y así poder enfrentarse al Boss, en el nivel de la Abeja estos tendrán movimiento hacia abajo y se destruirán al salir de pantalla, volviendo a crearse al inicio de esta.
+Class JugadorVista
+Esta clase se encarga de cargar las texturas para el jugador.
+Class PlataformaVista
+Donde se dibujan las plataformas que se generan en el mapa.
+MAPA 1
+Los jugadores llegan al mapa de “Cagney Carnation”, el fondo está ambientado en el bosque y los objetos/enemigos serán creados en el entorno y contexto de un jefe floral. Las texturas serán añadidas en la carpeta para ser ejecutadas en el código.
+En este mapa tendremos al boss y la implementación de 3 plataformas en posiciones estáticas, establecidas, desde el inicio del juego, hasta pasar al siguiente nivel.
+Cada clase tiene una Modelo, View y Controlador, generándose 3 por cada una de las siguientes:
+Class BossFlor
+Esta clase está enfocada en View. El objeto es inicializado en el lado derecho de la ventana (Tiene una posición en X e Y), el punto de origen va de acuerdo al tamaño de la ventana (Por lo que recibe un atributo de tipo “RenderWindow”); tanto el ancho y el alto de la imagen generada va en relación al tamaño de la ventana y la escala de la imagen insertada en “png” (Entre sus atributos recibe variables tipo “Texture” y “Sprite” para poder cargar las imágenes). Se dibujan 2 imágenes seleccionadas para dar la ilusión de movimiento (se tiene un atributo tipo bool, que nos indicará si debemos usar una u otra imagen), además se tiene un temporizador “Timer” y un tiempo límite “duration”, mismo que nos ayudará a cambiar de imagen una vez el temporizador ha llegado a ese tiempo límite.
+Class FondoView
+Crea un objeto que dibuja una imagen de fondo, esta estará dentro de ”while (window.isOpen())” y antes de llamar a cualquier método de alguna clase que dibuje algo sobre la ventana.
+Class EnemigoV
+Se inicializan las variables tipo “Texture” y “Sprites” para su visualización en la pantalla, por ello también tiene un atributo tipo RenderWindow; entre los métodos:
++setSize(); -> Establecer el tamaño
++setPosition(); -> Establecer la posición
++virtual updateTexture(); -> Lógica de cómo será dibujado cada objeto
++draw();t -> Dibujar las texturas.
+Esta heredará a las clases que pertenezcan a “View”, habiendo una para cada objeto de:
+Class EnemigoM
+En el diagrama de clases tiene los atributos que afectarán a las clases hijas de esta forma:
+-velocidad: float -> Todos los elementos que heredarán de esta clase tienen un movimiento, ya sea en X o en Y (Por ejemplo, las bombas que caen, tienen una gravedad constante, que es tomada como velocidad. O el Boomerang que se mueve de derecha a izquierda viceversa, con la misma velocidad en todo el movimiento).
+-posx: float y -posy: float -> Para establecer el punto de ubicación de las imágenes en la ventana, esta posición puede cambiar para simular cualquier movimiento.
+-width: float y -height: float -> Establece el tamaño de los objetos, puede variar (En este caso en la clase HeadAttack)
+-timer: chrono; -> Todos los objetos tienen un tiempo, ya sea de espera antes de moverse, o tiempo en el que permanecerán en un lugar antes de seguir otra instrucción.
+--clock : TimePoint; -> Para establecer los checkpoints de cada instrucción. 
+-eliminar: bool; -> Los objetos tipo “Enemigo” serán creados en un momento determinado y luego tendrán que desaparecer de la ventana para poder continuar con el nivel, con este atributo se puede saber si se debe o no eliminar el objeto.
+Entre los métodos que heredará tenemos:
++virtual move(); -> Establece el movimiento de los objetos
++colisión(); -> La que tiene con el jugador, en caso ocurra una colisión con el jugador “Class Cup”, le hará perder 1 vida. Esta clase heredará esta característica a las clases:
++delete(); -> Eliminar un objeto si ya no es requerido
++bool eliminar(); -> Verificas si se quiere o no eliminar.
++float getX(); y +float getY(); -> Obtener la posición X e Y (punto de origen)
++float getWidth(); y +float getHeight(); -> Obtener el ancho y alto.
++virtual update(); -> Esta modificará las lógicas de los movimientos, se implementará de diferente forma en cada objeto
+Class BombM
+Son proyectiles lanzados por el boss hacia el cielo y caen en lugares aleatorios, hasta llegar al piso, en donde generan una planta carnívora, pero cuidado, si tocas el proyectil o las plantas, perderás una vida.
+	Es una clase que heredará de “Enemigo” todos los atributos, estos serán implementados como: Velocidad(hacia abajo, aumentando en Y), el punto de ubicación (Y en la parte superior de la ventana y se establece un valor aleatorio para X), el tamaño de los lados, el temporizador que nos ayudará a esperar un tiempo en el piso antes de desaparecer, un TimePoint en el tiempo requerido, y cambiar el atributo ”eliminar” a True para poder eliminar el objeto luego de haber cumplido con su objetivo. Además tenemos los atributos:
+-esperando: bool -> Para cuando el objeto haya llegado al piso.
+-maxY: float -> posición máxima que puede tomar Y, en este caso, el piso.
+En el caso de los métodos que heredará de “Enemigo”, virtual move() nos ayudará a establecer la caída de los objetos, con virtual update() establecer la lógica de cada caída.
+El método setX(); -> nos ayudará a darle un valor aleatorio a X en un rango determinados.
+Class Head attack
+Es un ataque especial de la flor en la que su cabeza sale disparada para poder ocupar más espacio, el boss utiliza su centro, para crecer en X, ocupando así, la mitad superior o inferior, orillando al jugador a utilizar las plataformas para salir de cualquiera de estos 2 espacios peligrosos.
+	Es una clase que heredará de “Enemigo” todos los atributos, estos serán implementados como: Velocidad(hacia la izquierda, disminuyendo en X), el punto de ubicación, el tamaño de los lados (el ancho va a crecer y decrecer), el temporizador que nos ayudará a esperar lapsos de tiempo de espera antes de pasar a la siguiente instrucción, un TimePoint en el tiempo requerido, y cambiar el atributo ”eliminar” a True para poder eliminar el objeto luego de haber cumplido con su objetivo. Además tenemos los atributos:
+-state: int -> Nos ayudará en la función “update” para pasar de caso en caso, de acuerdo al tiempo y los tamaños afectados por la velocidad.
+En el caso de los métodos que heredará de “Enemigo”, virtual move() nos ayudará a establecer el movimiento hacia la izquierda (reduciendo su posición en X), con virtual update() establecer la lógica de esperar, crecer o moverse.
++setWidth(); -> Para Cambiar el ancho durante el update()
+Class ThornsRoot
+Genera raíces con espinas en todo el piso, que impiden al jugador bajar de las plataformas, estas crecen en las posiciones de X de cualquiera de las 3 plataformas del mapa. Su crecimiento es vertical y evita que el jugador pueda posicionarse en cualquiera de las 3 plataformas hasta que desaparezcan, estas espinas alternan su aparición, aleatoriamente se escogen 2 plataformas en cada “ataque del Boss”.
+	Es una clase que heredará de “Enemigo” todos los atributos, estos serán implementados como: Velocidad(crecimiento de cada espina), el punto de ubicación (se establece un valor aleatorio para X, un valor de 3), el tamaño de los lados (el alto va a crecer y decrecer), el temporizador que nos ayudará a esperar lapsos de tiempo de espera antes de pasar a la siguiente instrucción, un TimePoint en el tiempo requerido y cambiar el atributo ”eliminar” a True para poder eliminar el objeto luego de haber cumplido con su objetivo. Además tenemos los atributos:
+-AparecerX: float -> Nos ayudará a establecer en cuales 2 de cada 3 lugares aparecerá la raíz.
+En el caso de los métodos que heredará de “Enemigo”, virtual move() nos ayudará a establecer el movimiento hacia arriba (reduciendo su posición en Y), con virtual update() establecer la lógica de crecer, decrecer y cambiar. Además:
++setX(); -> Establecer X aleatorio (2/3).
++crecer(); -> Función para que crezca cada raíz.
+Class BossCreates
+Son objetos que son “generados“ por el “Boss”, Estos llaman a una animación de creación perteneciente al “Boss” y son inicializados en la posición izquierda a este. 
+	Siendo una clase que hereda de “Enemigo”, sus atributos estos serán implementados ya demás tenemos:
+-AparecerX: float y -AparecerY: float -> Establece el punto de inicio de cada objeto en X y Y
+-bool: create -> Nos indica si se requiere o no la creación de este objeto.
+En el caso de los métodos que heredará de “Enemigo”; 
++float getPIX(); y +float getPIY(); -> Para obtener el punto de inicio 
++bool getCreate(); -> obtener la variable. que nos servirá para que en View se pueda llamar a la animación de creación del Boss.
+Heredan estas características a los objetos:
+Class Boomerang
+Crea un objeto que tiene métodos para seguir el movimiento de derecha a izquierda y viceversa en 1 ocasión una vez es creado, cambia cuando el objeto está en las posiciones establecidas como extremos del movimiento. 
+Los atributos que heredará de “Enemigo” serán implementados como: Velocidad(constante de izquierda a derecha, se aumenta o disminuye a la posición en X), el punto de ubicación (cambia en X),  el punto de ubicación que hereda de “Class BossCreates” que es constante, el tamaño (no cambia luego de establecerlo), el temporizador que nos ayudará a esperar antes de empezar el movimiento, un TimePoint en el tiempo requerido y cambiar el atributo ”eliminar” a True para poder eliminar el objeto luego de haber cumplido con su objetivo. Además tenemos los atributos:
+-direction:int -> Nos ayudará a establecer si está yendo a la derecha o izquierda, para llamar al método necesario.
+En el caso de los métodos que heredará de “Enemigo”, virtual move() nos ayudará a establecer el movimiento a los lados (reduciendo y aumentando su posición en X), con virtual update() establecer la lógica de cambiar de direcciones y el movimiento. Además:
++moveLeft(); -> Movimiento a la Izquierda (el movimiento a la derecha es heredado por “virtual mover()” de la clase Enemigo)
+Class Seed
+Son 4 objetos que avanzan en dirección a la posición del jugador (en X y en Y). Su movimiento es rectilíneo y desaparecen una vez han tocado el lado izquierdo de la ventana.
+La dirección de estos objetos se establece durante el tiempo de ejecución, y ya que cada objeto se genera 1 segundo luego de el anterior, la nueva dirección para el siguiente objeto se actualiza con la reacción que se tuvo al anterior objeto.
+Los atributos que heredará de “Enemigo” serán implementados como: Velocidad(Varía en X e Y), el punto de ubicación (de acuerdo al jugador y sus reacciones),  el punto de ubicación que hereda de “Class BossCreates” que es constante, el tamaño (no cambia luego de establecerlo), el temporizador que nos ayudará a esperar antes de empezar el movimiento, un TimePoint en el tiempo requerido y cambiar el atributo ”eliminar” a True para poder eliminar el objeto luego de haber cumplido con su objetivo (dar con el jugador o salir de la ventana). Además tenemos los atributos:
+-destinox: float y -destinoy: float -> Nos ayudará a establecer la ubicación del punto final de los objetos.
+En el caso de los métodos que heredará de “Enemigo”, virtual move() nos ayudará a establecer el movimiento en dirección al jugador, con virtual update() establecer la lógica de recibir nuevos puntos de llegada y el movimiento. Además:
++setDX(); y +setDY(); -> Establecer el nuevo punto de llegada.
+Class silky
+Son objetos que aumentan y disminuyen en un rango en Y, mientras que su posición en X va hasta el lado izquierdo de la ventana. Estos aparecen en la posición final del Boss, a diferencia de las otras clases, la animación del Boss para generar objetos de esta clase es diferente, ya que es la fase final del Boss.
+Los atributos que heredará de “Enemigo” serán implementados como: Velocidad(Disminuye en X y en Y aumenta y disminuye), ubicación que cambia,  el punto de ubicación que hereda de “Class BossCreates” que es constante, el tamaño (no cambia luego de establecerlo), el temporizador que nos ayudará a esperar antes de empezar el movimiento, un TimePoint en el tiempo requerido y cambiar el atributo ”eliminar” a True para poder eliminar el objeto luego de haber cumplido con su objetivo (dar con el jugador o salir de la ventana). Además tenemos los atributos:
+-limSup: float -limInf: float -> Nos ayudará a establecer los límites de su movimiento en Y.
+En el caso de los métodos que heredará de “Enemigo”, virtual move() nos ayudará a establecer el movimiento, disminuyendo en X; con virtual update() establecer la lógica de cambiar de posición en Y entre los límites, con un movimiento similar al del boomerang, en donde si se llega, se cambia la dirección. Además:
++moverY(); -> Movimiento en Y (el movimiento en X es heredado por “virtual mover()” de la clase Enemigo).
+MAPA 2
+Class Boss Bee
+Como se comentó en la descripción del juego, tendremos 2 mapas. El primero ya fue definido líneas arriba de este documento. Para esta segunda parte tendremos a la Boss Bee el cual tendrá diferentes animaciones relacionadas con la aparición de las entidades (monstruos) que tendrá este mapa. La Abeja aparecerá esporádicamente en el mapa y en la vista del jugador en esquinas, partes laterales del mapa, parte baja del mapa y parte alta del mapa en donde este podrá ser vulnerable y recibir daño por parte del jugador (Cup). Esta Abeja tendrá diferentes posiciones de acuerdo a la cantidad de vida tendrá, ya que al recibir daño por parte del jugador iniciará diferentes acciones las cuales determinarán que tipo de monstruos generados y en qué posición estarán.La definición de sus métodos aún está en proceso, ya que decidimos primero centrarnos en la implementación de los monstruos. 
+La implementación de cada una de estas clases se hará mediante el uso de la arquitectura MVC para lo que tendremos 3 clases determinadas por el GameController, la clase View donde encontraremos a la librería SFML para poder renderizar todos los objetos que creemos y por último se tendrá a la clase Model la que guardará toda la lógica subyacente de cada uno de los objetos por lo que estos tendrán una implementación para Model y otra View. Dicho todo esto pasaré a mostrar en las siguientes clases de este apartado de la Class Boss Bee.
+BombaPoliceM
+Es una clase derivada de la clase base "Enemigo" y representa una bomba controlada por la policía en un juego. Como características tenemos al movimiento limitado: A diferencia de otros enemigos, la bomba no se mueve y permanece estática en su posición inicial. Control de tiempo de vida: La bomba tiene un tiempo de vida limitado, especificado por la variable "lifetime". El método "isExpired()" verifica si el tiempo transcurrido desde su inicio hasta el tiempo actual ha superado el tiempo de vida. Si es así, se considera que la bomba ha expirado y devuelve "true". Cuando esta explota genera 8 espinas que recorren todo la ventana del juego haciendo daño al jugador si son tocados por estas.
+BombaPoliceV
+Se encarga de visualizar la bomba en una ventana de renderizado utilizando la biblioteca SFML. En el constructor, se recibe un puntero a un objeto de la clase "BombaPoliceM" y se utiliza para configurar la posición y tamaño de la forma circular de la bomba. En el método "draw()", se verifica si el tiempo transcurrido desde el inicio de la bomba hasta el tiempo actual es menor o igual a su tiempo de vida. Si es así, se dibuja la forma circular de la bomba en la ventana de renderizado.
+EspinaM
+La clase "EspinaM" representa una espina la cual tiene la capacidad de tener impacto en la vida del jugador, en total se generan 8 tipos de espinas. Tiene la funcionalidad de moverse en diferentes direcciones según el tipo de espina y verificar si ha expirado cuando sale de los límites del área de juego. La espina tiene una velocidad de movimiento (speed) que determina qué tan rápido se desplaza. El tipo de movimiento (type) se especifica en el constructor y puede ser 'r' (derecha), 'l' (izquierda), 'u' (arriba), 'd' (abajo), 'a' (arriba izquierda), 'b' (arriba derecha), 'c' (abajo izquierda) o 'e' (abajo derecha). De la misma forma que la demás entidades de enemigos también tenemos la clase EspinaV en donde se guardará toda la parte de renderizado del objeto.  En el método "draw()", se dibuja la forma triangular de la espina en la ventana de renderizado. En el método "move()", se actualiza la posición de la forma triangular según la posición actual de la espina.
+WorkerBeeM
+La clase "WorkerBeeM" representa una abeja trabajadora en el juego. Tiene la característica de moverse en una dirección específica, actualizar su posición y verificar si ha expirado al salir de los límites del área de juego. En caso de que veamos que su posición esté fuera de la ventana teniendo en cuenta su tamaño procederá a expirar como objeto. Ya que su implementación estará hecha mediante un puntero se eliminará y se procederá a volver a crear mediante un valor random para el eje de las y ya que para el eje de las x este siempre será al extremo de la ventana. Dado que estamos en un entorno MVC, esta clase también tiene su equivalente en el View en donde tiene el nombre de WorkerBeeV. Este es el encargado de renderizar este objeto con la función draw();
+PoliceM
+La clase "PoliceM" representa un enemigo abeja de tipo policía el cual puede volar y puede moverse de izquierda a derecha dentro de ciertos límites definidos por los parámetros limitx y limity. Tiene la capacidad de soltar una bomba y generar espinas en su posición cuando la bomba expira. Estas están controladas por un timer en donde cada 3 segundos tira una bomba en la posición en x e y que tenga en ese instante. Esta bomba también tiene la capacidad de explotar generando las 8 espinas que se comentaron en la clase EspinaM y EspinaV.
+PoliceV
+Como ya se sabe, esta clase se encargará de captar toda la parte lógica otorgada por su paralelo en el modelo para poder renderizar la forma del policía y poder ser dibujado en la pantalla del view. Se tiene un método "update()" se encarga de actualizar el estado del enemigo el cual recibe como parámetro un timer definido por la biblioteca gráfica. Esto se hace tanto para los objetos Espinas y bomba ya que se precargar estos para ser utilizados por el policía abeja. Por tal motivo también se tiene métodos los cuales se encargan de manejar todos estos objetos precargados los cuales son punteros los cuales tienen que ser inicializados y eliminados de acuerdo al estado de estos en el update().
+TrianguloM
+Esta clase se encarga de guardar la lógica de movimiento, tipos y la expiración de un objeto en forma de triángulo el cual flotara en la ventana del jugador haciendo daño por colisión con el mismo, además de que este genera espinas cada cierto tiempo. Aunque este método aún no fue iniciado en la implementación que se presentará.  El triángulo se mueve en diferentes direcciones (derecha, izquierda, arriba, abajo, diagonales) según el tipo especificado. Tiene un límite de movimiento definido por los parámetros xlimit y ylimit. También tiene una velocidad de movimiento y una velocidad de rotación. La clase TrianguloV se encarga de visualizar al enemigo tipo triángulo en una ventana de renderizado utilizando la biblioteca SFML, en este lado tenemos a funciones importantes como los update y los movimientos lso cuales trabajarán de la mano con los métodos de TrianguloM ya que estos actualizarán sus posiciones.

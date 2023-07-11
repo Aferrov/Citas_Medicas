@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Citas_Medicas.ServiceReference1;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -11,33 +12,6 @@ namespace Citas_Medicas
 {
     public partial class Login : System.Web.UI.Page
     {
-        public bool Loguearse(string usuario, string contra)
-        {
-            string connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=CitasMedicas;Integrated Security=True";
-            string contras = "";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand("SELECT contrasena FROM Usuario WHERE usuario=@Value1", connection);
-                command.Parameters.AddWithValue("@Value1", usuario);
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    contras = reader["Contrasena"].ToString();
-                }
-                connection.Close();
-            }
-            if (contras == "")
-                return false;
-            else if(contras==contra)
-                return true;
-            else 
-                return false;  
-
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -47,7 +21,8 @@ namespace Citas_Medicas
         {
             string u = usuario.Text;
             string c = contrasena.Text;
-            bool correcto=Loguearse(u, c);
+            Service1Client client = new Service1Client();
+            bool correcto=client.Loguearse(u, c);
             if (correcto) 
             {
                 Response.Redirect("Inicio.aspx");
