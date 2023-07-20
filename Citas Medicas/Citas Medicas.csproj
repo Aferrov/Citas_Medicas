@@ -77,9 +77,24 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="citasPacientes.aspx" />
+    <Content Include="configDoc.aspx" />
+    <Content Include="configPaciente.aspx" />
+    <Content Include="docEditar.aspx" />
+    <Content Include="docEliminar.aspx" />
+    <Content Include="docInfo.aspx" />
+    <Content Include="EditarCuenta.aspx" />
+    <Content Include="EliminarCuenta.aspx" />
+    <Content Include="historial.aspx" />
+    <Content Include="InfoCuenta.aspx" />
+    <Content Include="inicioDoc.aspx" />
+    <Content Include="inicioPaciente.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="pacientes.aspx" />
     <Content Include="Pagina_Inicio.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="verCitaDoc.aspx" />
+    <Content Include="verPacienteDoc.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio.aspx" />
   </ItemGroup>
@@ -91,10 +106,94 @@
     <Compile Include="Citas.aspx.designer.cs">
       <DependentUpon>Citas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="citasPacientes.aspx.cs">
+      <DependentUpon>citasPacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="citasPacientes.aspx.designer.cs">
+      <DependentUpon>citasPacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="configDoc.aspx.cs">
+      <DependentUpon>configDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="configDoc.aspx.designer.cs">
+      <DependentUpon>configDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="configPaciente.aspx.cs">
+      <DependentUpon>configPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="configPaciente.aspx.designer.cs">
+      <DependentUpon>configPaciente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="docEditar.aspx.cs">
+      <DependentUpon>docEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="docEditar.aspx.designer.cs">
+      <DependentUpon>docEditar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="docEliminar.aspx.cs">
+      <DependentUpon>docEliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="docEliminar.aspx.designer.cs">
+      <DependentUpon>docEliminar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="docInfo.aspx.cs">
+      <DependentUpon>docInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="docInfo.aspx.designer.cs">
+      <DependentUpon>docInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarCuenta.aspx.cs">
+      <DependentUpon>EditarCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarCuenta.aspx.designer.cs">
+      <DependentUpon>EditarCuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarCuenta.aspx.cs">
+      <DependentUpon>EliminarCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarCuenta.aspx.designer.cs">
+      <DependentUpon>EliminarCuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="historial.aspx.cs">
+      <DependentUpon>historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="historial.aspx.designer.cs">
+      <DependentUpon>historial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InfoCuenta.aspx.cs">
+      <DependentUpon>InfoCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InfoCuenta.aspx.designer.cs">
+      <DependentUpon>InfoCuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inicioDoc.aspx.cs">
+      <DependentUpon>inicioDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inicioDoc.aspx.designer.cs">
+      <DependentUpon>inicioDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="inicioPaciente.aspx.cs">
+      <DependentUpon>inicioPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inicioPaciente.aspx.designer.cs">
+      <DependentUpon>inicioPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -102,6 +201,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pacientes.aspx.cs">
+      <DependentUpon>pacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pacientes.aspx.designer.cs">
+      <DependentUpon>pacientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagina_Inicio.aspx.cs">
       <DependentUpon>Pagina_Inicio.aspx</DependentUpon>
@@ -125,6 +231,20 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="verCitaDoc.aspx.cs">
+      <DependentUpon>verCitaDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="verCitaDoc.aspx.designer.cs">
+      <DependentUpon>verCitaDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="verPacienteDoc.aspx.cs">
+      <DependentUpon>verPacienteDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="verPacienteDoc.aspx.designer.cs">
+      <DependentUpon>verPacienteDoc.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference1\Service1.wsdl" />
@@ -134,7 +254,15 @@
     <None Include="Connected Services\ServiceReference1\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference1\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <Content Include="Properties\DataSources\Base_Datos.Cita.datasource" />
+    <Content Include="Properties\DataSources\Base_Datos.Paciente.datasource" />
+    <Content Include="Properties\DataSources\Base_Datos.Doctor.datasource" />
+    <Content Include="Properties\DataSources\Base_Datos.Especialidad.datasource" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,6 +279,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base_Datos\Base_Datos.csproj">
+      <Project>{765db0a2-9289-4613-8cbb-5e50c7410b33}</Project>
+      <Name>Base_Datos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -16,16 +16,70 @@ namespace Citas_Medicas.ServiceReference1 {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Registrarse", ReplyAction="http://tempuri.org/IService1/RegistrarseResponse")]
-        void Registrarse(string nombre, string apellido, string direccion, System.DateTime fec_nac, string usuario, string contra);
+        int Registrarse(string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, string contra);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Registrarse", ReplyAction="http://tempuri.org/IService1/RegistrarseResponse")]
-        System.Threading.Tasks.Task RegistrarseAsync(string nombre, string apellido, string direccion, System.DateTime fec_nac, string usuario, string contra);
+        System.Threading.Tasks.Task<int> RegistrarseAsync(string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, string contra);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Loguearse", ReplyAction="http://tempuri.org/IService1/LoguearseResponse")]
         bool Loguearse(string usuario, string contra);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Loguearse", ReplyAction="http://tempuri.org/IService1/LoguearseResponse")]
         System.Threading.Tasks.Task<bool> LoguearseAsync(string usuario, string contra);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Usuario", ReplyAction="http://tempuri.org/IService1/Rol_UsuarioResponse")]
+        int Rol_Usuario(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Usuario", ReplyAction="http://tempuri.org/IService1/Rol_UsuarioResponse")]
+        System.Threading.Tasks.Task<int> Rol_UsuarioAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Actualizar_Paciente", ReplyAction="http://tempuri.org/IService1/Actualizar_PacienteResponse")]
+        void Actualizar_Paciente(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int cui, int vac, string sangre, string carrera);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Actualizar_Paciente", ReplyAction="http://tempuri.org/IService1/Actualizar_PacienteResponse")]
+        System.Threading.Tasks.Task Actualizar_PacienteAsync(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int cui, int vac, string sangre, string carrera);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Datos_Paciente", ReplyAction="http://tempuri.org/IService1/Datos_PacienteResponse")]
+        Base_Datos.Paciente Datos_Paciente(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Datos_Paciente", ReplyAction="http://tempuri.org/IService1/Datos_PacienteResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Paciente> Datos_PacienteAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Actualizar_Medico", ReplyAction="http://tempuri.org/IService1/Actualizar_MedicoResponse")]
+        void Actualizar_Medico(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int especialidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Actualizar_Medico", ReplyAction="http://tempuri.org/IService1/Actualizar_MedicoResponse")]
+        System.Threading.Tasks.Task Actualizar_MedicoAsync(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int especialidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Datos_Medico", ReplyAction="http://tempuri.org/IService1/Datos_MedicoResponse")]
+        Base_Datos.Doctor Datos_Medico(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Datos_Medico", ReplyAction="http://tempuri.org/IService1/Datos_MedicoResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Doctor> Datos_MedicoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Especialidades", ReplyAction="http://tempuri.org/IService1/EspecialidadesResponse")]
+        Base_Datos.Especialidad[] Especialidades();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Especialidades", ReplyAction="http://tempuri.org/IService1/EspecialidadesResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Especialidad[]> EspecialidadesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Id_Usuario", ReplyAction="http://tempuri.org/IService1/Id_UsuarioResponse")]
+        int Id_Usuario(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Id_Usuario", ReplyAction="http://tempuri.org/IService1/Id_UsuarioResponse")]
+        System.Threading.Tasks.Task<int> Id_UsuarioAsync(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Citas_Medico", ReplyAction="http://tempuri.org/IService1/Citas_MedicoResponse")]
+        Base_Datos.Cita[] Citas_Medico(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Citas_Medico", ReplyAction="http://tempuri.org/IService1/Citas_MedicoResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Cita[]> Citas_MedicoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Citas_Paciente", ReplyAction="http://tempuri.org/IService1/Citas_PacienteResponse")]
+        Base_Datos.Cita[] Citas_Paciente(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Citas_Paciente", ReplyAction="http://tempuri.org/IService1/Citas_PacienteResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Cita[]> Citas_PacienteAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,12 +109,12 @@ namespace Citas_Medicas.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public void Registrarse(string nombre, string apellido, string direccion, System.DateTime fec_nac, string usuario, string contra) {
-            base.Channel.Registrarse(nombre, apellido, direccion, fec_nac, usuario, contra);
+        public int Registrarse(string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, string contra) {
+            return base.Channel.Registrarse(nombre, apellido, direccion, fec_nac, correo, usuario, contra);
         }
         
-        public System.Threading.Tasks.Task RegistrarseAsync(string nombre, string apellido, string direccion, System.DateTime fec_nac, string usuario, string contra) {
-            return base.Channel.RegistrarseAsync(nombre, apellido, direccion, fec_nac, usuario, contra);
+        public System.Threading.Tasks.Task<int> RegistrarseAsync(string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, string contra) {
+            return base.Channel.RegistrarseAsync(nombre, apellido, direccion, fec_nac, correo, usuario, contra);
         }
         
         public bool Loguearse(string usuario, string contra) {
@@ -69,6 +123,78 @@ namespace Citas_Medicas.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> LoguearseAsync(string usuario, string contra) {
             return base.Channel.LoguearseAsync(usuario, contra);
+        }
+        
+        public int Rol_Usuario(int id) {
+            return base.Channel.Rol_Usuario(id);
+        }
+        
+        public System.Threading.Tasks.Task<int> Rol_UsuarioAsync(int id) {
+            return base.Channel.Rol_UsuarioAsync(id);
+        }
+        
+        public void Actualizar_Paciente(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int cui, int vac, string sangre, string carrera) {
+            base.Channel.Actualizar_Paciente(id, nombre, apellido, direccion, fec_nac, correo, usuario, cui, vac, sangre, carrera);
+        }
+        
+        public System.Threading.Tasks.Task Actualizar_PacienteAsync(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int cui, int vac, string sangre, string carrera) {
+            return base.Channel.Actualizar_PacienteAsync(id, nombre, apellido, direccion, fec_nac, correo, usuario, cui, vac, sangre, carrera);
+        }
+        
+        public Base_Datos.Paciente Datos_Paciente(int id) {
+            return base.Channel.Datos_Paciente(id);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Paciente> Datos_PacienteAsync(int id) {
+            return base.Channel.Datos_PacienteAsync(id);
+        }
+        
+        public void Actualizar_Medico(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int especialidad) {
+            base.Channel.Actualizar_Medico(id, nombre, apellido, direccion, fec_nac, correo, usuario, especialidad);
+        }
+        
+        public System.Threading.Tasks.Task Actualizar_MedicoAsync(int id, string nombre, string apellido, string direccion, System.DateTime fec_nac, string correo, string usuario, int especialidad) {
+            return base.Channel.Actualizar_MedicoAsync(id, nombre, apellido, direccion, fec_nac, correo, usuario, especialidad);
+        }
+        
+        public Base_Datos.Doctor Datos_Medico(int id) {
+            return base.Channel.Datos_Medico(id);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Doctor> Datos_MedicoAsync(int id) {
+            return base.Channel.Datos_MedicoAsync(id);
+        }
+        
+        public Base_Datos.Especialidad[] Especialidades() {
+            return base.Channel.Especialidades();
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Especialidad[]> EspecialidadesAsync() {
+            return base.Channel.EspecialidadesAsync();
+        }
+        
+        public int Id_Usuario(string usuario) {
+            return base.Channel.Id_Usuario(usuario);
+        }
+        
+        public System.Threading.Tasks.Task<int> Id_UsuarioAsync(string usuario) {
+            return base.Channel.Id_UsuarioAsync(usuario);
+        }
+        
+        public Base_Datos.Cita[] Citas_Medico(int id) {
+            return base.Channel.Citas_Medico(id);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Cita[]> Citas_MedicoAsync(int id) {
+            return base.Channel.Citas_MedicoAsync(id);
+        }
+        
+        public Base_Datos.Cita[] Citas_Paciente(int id) {
+            return base.Channel.Citas_Paciente(id);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Cita[]> Citas_PacienteAsync(int id) {
+            return base.Channel.Citas_PacienteAsync(id);
         }
     }
 }

@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Base_Datos" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_Registrarse_InputMessage">
@@ -18,6 +19,60 @@
   <wsdl:message name="IService1_Loguearse_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoguearseResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Rol_Usuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:Rol_Usuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Rol_Usuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Rol_UsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Actualizar_Paciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:Actualizar_Paciente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Actualizar_Paciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Actualizar_PacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Datos_Paciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:Datos_Paciente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Datos_Paciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Datos_PacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Actualizar_Medico_InputMessage">
+    <wsdl:part name="parameters" element="tns:Actualizar_Medico" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Actualizar_Medico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Actualizar_MedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Datos_Medico_InputMessage">
+    <wsdl:part name="parameters" element="tns:Datos_Medico" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Datos_Medico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Datos_MedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Especialidades_InputMessage">
+    <wsdl:part name="parameters" element="tns:Especialidades" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Especialidades_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EspecialidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Id_Usuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:Id_Usuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Id_Usuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Id_UsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Citas_Medico_InputMessage">
+    <wsdl:part name="parameters" element="tns:Citas_Medico" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Citas_Medico_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Citas_MedicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Citas_Paciente_InputMessage">
+    <wsdl:part name="parameters" element="tns:Citas_Paciente" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Citas_Paciente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Citas_PacienteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="Registrarse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Registrarse" message="tns:IService1_Registrarse_InputMessage" />
@@ -26,6 +81,42 @@
     <wsdl:operation name="Loguearse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Loguearse" message="tns:IService1_Loguearse_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoguearseResponse" message="tns:IService1_Loguearse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Rol_Usuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Rol_Usuario" message="tns:IService1_Rol_Usuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Rol_UsuarioResponse" message="tns:IService1_Rol_Usuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar_Paciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Actualizar_Paciente" message="tns:IService1_Actualizar_Paciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Actualizar_PacienteResponse" message="tns:IService1_Actualizar_Paciente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Datos_Paciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Datos_Paciente" message="tns:IService1_Datos_Paciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Datos_PacienteResponse" message="tns:IService1_Datos_Paciente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar_Medico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Actualizar_Medico" message="tns:IService1_Actualizar_Medico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Actualizar_MedicoResponse" message="tns:IService1_Actualizar_Medico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Datos_Medico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Datos_Medico" message="tns:IService1_Datos_Medico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Datos_MedicoResponse" message="tns:IService1_Datos_Medico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Especialidades">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Especialidades" message="tns:IService1_Especialidades_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EspecialidadesResponse" message="tns:IService1_Especialidades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Id_Usuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Id_Usuario" message="tns:IService1_Id_Usuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Id_UsuarioResponse" message="tns:IService1_Id_Usuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Citas_Medico">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Citas_Medico" message="tns:IService1_Citas_Medico_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Citas_MedicoResponse" message="tns:IService1_Citas_Medico_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Citas_Paciente">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Citas_Paciente" message="tns:IService1_Citas_Paciente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Citas_PacienteResponse" message="tns:IService1_Citas_Paciente_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -41,6 +132,87 @@
     </wsdl:operation>
     <wsdl:operation name="Loguearse">
       <soap:operation soapAction="http://tempuri.org/IService1/Loguearse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Rol_Usuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/Rol_Usuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar_Paciente">
+      <soap:operation soapAction="http://tempuri.org/IService1/Actualizar_Paciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Datos_Paciente">
+      <soap:operation soapAction="http://tempuri.org/IService1/Datos_Paciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar_Medico">
+      <soap:operation soapAction="http://tempuri.org/IService1/Actualizar_Medico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Datos_Medico">
+      <soap:operation soapAction="http://tempuri.org/IService1/Datos_Medico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Especialidades">
+      <soap:operation soapAction="http://tempuri.org/IService1/Especialidades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Id_Usuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/Id_Usuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Citas_Medico">
+      <soap:operation soapAction="http://tempuri.org/IService1/Citas_Medico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Citas_Paciente">
+      <soap:operation soapAction="http://tempuri.org/IService1/Citas_Paciente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -24,11 +24,12 @@ namespace Citas_Medicas
             DateTime fec= new DateTime(1920, 1, 1);
             if (!string.IsNullOrEmpty(fec_nac.Text))
                 DateTime.Parse(fec_nac.Text);
+            string cor=correo.Text;
             string usu=usuario.Text;
             string con=contrasena.Text;
             Service1Client client = new Service1Client();
-            client.Registrarse(nom,ape,dir,fec,usu,con);
-            
+            client.Registrarse(nom,ape,dir,fec,cor,usu,con);
+            Response.Redirect("Inicio.aspx");
         }
     }
 }

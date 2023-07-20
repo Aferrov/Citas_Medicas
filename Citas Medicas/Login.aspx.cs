@@ -17,6 +17,11 @@ namespace Citas_Medicas
 
         }
 
+        private void createSesion(String Usuario, int Id)
+        {
+            Session["Usuario"] = Usuario;
+            Session["Id"] = Id;
+        }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string u = usuario.Text;
@@ -25,7 +30,21 @@ namespace Citas_Medicas
             bool correcto=client.Loguearse(u, c);
             if (correcto) 
             {
-                Response.Redirect("Inicio.aspx");
+                int id = client.Id_Usuario(u);
+                int rol = client.Rol_Usuario(id);
+                createSesion(u, id);
+                switch(rol)
+                {
+                    case 1 :
+                        break;
+                    case 2 :
+                        Response.Redirect("inicioDoc.aspx");
+                        break;
+                    case 3 :
+                        Response.Redirect("inicioPaciente.aspx");
+                        break;
+                }
+                
             }
             else
             {

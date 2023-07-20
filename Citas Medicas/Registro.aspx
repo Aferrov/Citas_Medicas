@@ -70,6 +70,16 @@
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
+                        <label for="dob" class="form-label">Correo: </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        <asp:TextBox ID="correo" class="input-text" placeholder="Correo" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
                         <label for="dob" class="form-label">Usuario: </label>
                     </td>
                 </tr>

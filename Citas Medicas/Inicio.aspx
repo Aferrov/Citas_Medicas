@@ -41,13 +41,13 @@
                                     <img src="../img/logo_azul.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">Nombre..</p>
-                                    <p class="profile-subtitle">nombre@unsa.edu.pe</p>
+                                    <asp:Label ID="nombre" runat="server" Text="Nombre"></asp:Label>
+                                    <asp:Label ID="correo" runat="server" Text="correo"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php"><input type="button" value="Cerrar Sesión" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../Pagina_Inicio.aspx"><input type="button" value="Cerrar Sesión" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                         </tbody></table>
