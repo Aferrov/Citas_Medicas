@@ -79,7 +79,7 @@ namespace Base_Datos
 
         }
 
-        public List<Cita> Paciente_Citas(int id)
+        public List<Cita> Paciente_Citas(int id,string d,string m,string a)
         {
             List<Cita> citas = new List<Cita>();
             string connectionString = "Data Source=ARLEEN;" +
@@ -91,6 +91,12 @@ namespace Base_Datos
                 SqlCommand command = new SqlCommand("Select_Paciente_Citas", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Id", id);
+                if (!string.IsNullOrEmpty(d) && !string.IsNullOrEmpty(m) && !string.IsNullOrEmpty(a))
+                {
+                    command.Parameters.AddWithValue("@Dia", d);
+                    command.Parameters.AddWithValue("@Mes", m);
+                    command.Parameters.AddWithValue("@Anio", a);
+                }
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -98,7 +104,8 @@ namespace Base_Datos
                     Cita cita_ = new Cita();
                     cita_.Id = Convert.ToInt32(reader["Id"]);
                     cita_.PacienteId = Convert.ToInt32(reader["PacienteId"]);
-                    cita_.Paciente = reader["Paciente"].ToString();
+                    cita_.MedicoId = Convert.ToInt32(reader["MedicoId"]);
+                    cita_.Especialidad = reader["Especialidad"].ToString();
                     cita_.Fecha = reader["Fecha"].ToString();
                     cita_.Diagnostico = reader["Diagnostico"].ToString();
                     citas.Add(cita_);
@@ -110,7 +117,7 @@ namespace Base_Datos
         }
 
         public void Actualizar_Datos(int id,string nombre, string apellido, string direccion, DateTime fec_nac,
-                                string correo, string usuario,int cui, int vac, string sangre, string carrera)
+                                string correo,int cui, int vac, string sangre, string carrera)
         {
             string connectionString = "Data Source=ARLEEN;" +
                 "Initial Catalog=CitasMedicas;Integrated Security=True";
@@ -127,7 +134,6 @@ namespace Base_Datos
                 command.Parameters.AddWithValue("@Direccion", direccion);
                 command.Parameters.AddWithValue("@Fec_Nac", fec_nac);
                 command.Parameters.AddWithValue("@Correo", correo);
-                command.Parameters.AddWithValue("@Usuario", usuario);
                 command.Parameters.AddWithValue("@CUI", cui);
                 command.Parameters.AddWithValue("@Nro_Vac", vac);
                 command.Parameters.AddWithValue("@Sangre", sangre);

@@ -69,7 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Citas.aspx" />
     <None Include="Connected Services\ServiceReference1\Service1.disco" />
     <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
@@ -83,7 +82,7 @@
     <Content Include="docEditar.aspx" />
     <Content Include="docEliminar.aspx" />
     <Content Include="docInfo.aspx" />
-    <Content Include="EditarCuenta.aspx" />
+    <Content Include="CambiarContrasena.aspx" />
     <Content Include="EliminarCuenta.aspx" />
     <Content Include="historial.aspx" />
     <Content Include="InfoCuenta.aspx" />
@@ -96,16 +95,8 @@
     <Content Include="verCitaDoc.aspx" />
     <Content Include="verPacienteDoc.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Inicio.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Citas.aspx.cs">
-      <DependentUpon>Citas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Citas.aspx.designer.cs">
-      <DependentUpon>Citas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="citasPacientes.aspx.cs">
       <DependentUpon>citasPacientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,12 +144,12 @@
     <Compile Include="docInfo.aspx.designer.cs">
       <DependentUpon>docInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarCuenta.aspx.cs">
-      <DependentUpon>EditarCuenta.aspx</DependentUpon>
+    <Compile Include="CambiarContrasena.aspx.cs">
+      <DependentUpon>CambiarContrasena.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditarCuenta.aspx.designer.cs">
-      <DependentUpon>EditarCuenta.aspx</DependentUpon>
+    <Compile Include="CambiarContrasena.aspx.designer.cs">
+      <DependentUpon>CambiarContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminarCuenta.aspx.cs">
       <DependentUpon>EliminarCuenta.aspx</DependentUpon>
@@ -217,13 +208,6 @@
       <DependentUpon>Pagina_Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

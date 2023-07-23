@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Base_Datos
 {
@@ -83,7 +84,7 @@ namespace Base_Datos
         }
 
         public void Actualizar_Datos(int id, string nombre, string apellido, string direccion, DateTime fec_nac,
-                                string correo, string usuario, int especialidad)
+                                string correo, int especialidad)
         {
             string connectionString = "Data Source=ARLEEN;" +
                 "Initial Catalog=CitasMedicas;Integrated Security=True";
@@ -100,7 +101,6 @@ namespace Base_Datos
                 command.Parameters.AddWithValue("@Direccion", direccion);
                 command.Parameters.AddWithValue("@Fec_Nac", fec_nac);
                 command.Parameters.AddWithValue("@Correo", correo);
-                command.Parameters.AddWithValue("@Usuario", usuario);
                 command.Parameters.AddWithValue("@Especialidad", especialidad);
 
                 command.ExecuteNonQuery();
@@ -110,7 +110,7 @@ namespace Base_Datos
 
         }
 
-        public List<Cita> Medico_Citas(int id)
+        public List<Cita> Medico_Citas(int id,string d,string m,string a)
         {
             List<Cita> citas = new List<Cita>();
             string connectionString = "Data Source=ARLEEN;" +
@@ -122,6 +122,13 @@ namespace Base_Datos
                 SqlCommand command = new SqlCommand("Select_Medico_Citas", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Id", id);
+                if(!string.IsNullOrEmpty(d) && !string.IsNullOrEmpty(m) && !string.IsNullOrEmpty(a))
+                {
+                    command.Parameters.AddWithValue("@Dia", d);
+                    command.Parameters.AddWithValue("@Mes", m);
+                    command.Parameters.AddWithValue("@Anio", a);
+                }
+                
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())

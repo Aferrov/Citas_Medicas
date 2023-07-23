@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="docEditar.aspx.cs" Inherits="Citas_Medicas.WebForm18" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CambiarContrasena.aspx.cs" Inherits="Citas_Medicas.WebForm12" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
 
     <title>Configuración</title>
+    
     <script type="text/javascript">
         function changeTextMode() {
         var checkBox = document.getElementById("CheckContra");
@@ -143,3 +143,4 @@
     </div>
 </body>
 </html>
+    

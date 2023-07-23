@@ -12,13 +12,14 @@ namespace Base_Datos
     {
         public static void Main(string[] args)
         {
-            IList<Cita> citas = new Doctor().Medico_Citas(4);
+            /*IList<Cita> citas = new Doctor().Medico_Citas(4);
             foreach (Cita c in citas)
             {
                 Console.WriteLine(c.Paciente);
-            }
-            /*Doctor d = new Doctor().Datos_Doctor(4);
-            Console.WriteLine(d.Nombre);*/
+            }*/
+            Doctor doc = new Doctor();
+            doc.Actualizar_Datos(4,"Gabriel", "Juarez Medina", "su casa",DateTime.Now, "gabriel@unsa.edu.pe", 1);
+            
             Console.ReadKey();
         }
 
@@ -43,9 +44,9 @@ namespace Base_Datos
                 contras = command.Parameters["@Contrasena"].Value.ToString();
                 connection.Close();
             }
-            if (contras == "")
-                return false;
-            else if (contras == contra)
+            Password pas = new Password();
+            string pasword=pas.Desencriptar(contras);
+            if (pasword.Equals(contra))
                 return true;
             else
                 return false;

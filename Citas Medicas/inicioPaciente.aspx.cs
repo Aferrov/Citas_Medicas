@@ -28,13 +28,15 @@ namespace Citas_Medicas
             LabelNombre.Text = paciente.Nombre+" "+paciente.Apellido;
             LabelNombre2.Text = paciente.Nombre + " " + paciente.Apellido;
             LabelCorreo.Text = paciente.Correo;
+            Fecha_Actual.Text= DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void llenarTabla()
         {
             int id = (int)(Session["Id"]);
+            DateTime fecha = DateTime.Now;
             Service1Client client = new Service1Client();
-            IList<Cita> citas = client.Citas_Paciente(id);
+            IList<Cita> citas = client.Citas_Paciente(id, fecha.Day.ToString("D2"), fecha.Month.ToString("D2"), fecha.Year.ToString());
             int n = 1;
             foreach (Cita c in citas)
             {

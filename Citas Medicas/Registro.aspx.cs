@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Base_Datos;
 using Citas_Medicas.ServiceReference1;
 
 namespace Citas_Medicas
@@ -16,6 +17,11 @@ namespace Citas_Medicas
 
         }
 
+        private void createSesion(String Usuario, int Id)
+        {
+            Session["Usuario"] = Usuario;
+            Session["Id"] = Id;
+        }
         protected void btn_enviar_Click(object sender, EventArgs e)
         {
             string nom=nombre.Text;
@@ -26,9 +32,22 @@ namespace Citas_Medicas
                 DateTime.Parse(fec_nac.Text);
             string cor=correo.Text;
             string usu=usuario.Text;
-            string con=contrasena.Text;
+            string con=new Password().Encriptar(contrasena.Text);
             Service1Client client = new Service1Client();
-            client.Registrarse(nom,ape,dir,fec,cor,usu,con);
+            int id = client.Registrarse(nom, ape, dir, fec, cor, usu, con);
+            int rol = client.Rol_Usuario(id);
+            createSesion(usu, id);
+            switch (rol)
+            {
+                case 1:
+                    break;
+                case 2:
+                    Response.Redirect("inicioDoc.aspx");
+                    break;
+                case 3:
+                    Response.Redirect("inicioPaciente.aspx");
+                    break;
+            }
             Response.Redirect("Inicio.aspx");
         }
     }

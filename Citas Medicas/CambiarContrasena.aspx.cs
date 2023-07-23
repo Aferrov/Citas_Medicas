@@ -1,16 +1,15 @@
-﻿using Citas_Medicas.ServiceReference1;
+﻿using Base_Datos;
+using Citas_Medicas.ServiceReference1;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Base_Datos;
 
 namespace Citas_Medicas
 {
-    public partial class WebForm4 : System.Web.UI.Page
+    public partial class WebForm12 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,9 +22,22 @@ namespace Citas_Medicas
             int id = (int)(Session["Id"]);
             Service1Client client = new Service1Client();
             Paciente paciente = client.Datos_Paciente(id);
+
             LabelNombre.Text = paciente.Nombre + " " + paciente.Apellido;
             LabelCorreo.Text = paciente.Correo;
-            Fecha_Actual.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
+
+        protected void ButtonCambiar_Click(object sender, EventArgs e)
+        {
+            int id = (int)(Session["Id"]);
+            string contra = TextContraNue.Text;
+            Password pas = new Password();
+            contra = pas.Encriptar(contra);
+            Service1Client client = new Service1Client();
+            client.Cambiar_Contraseña(id,contra);
+
+        }
+
+        
     }
 }

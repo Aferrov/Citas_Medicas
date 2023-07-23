@@ -25,14 +25,14 @@ namespace Servicios
 
         [OperationContract]
         void Actualizar_Paciente(int id, string nombre, string apellido, string direccion, DateTime fec_nac,
-                                string correo, string usuario, int cui, int vac, string sangre, string carrera);
+                                string correo, int cui, int vac, string sangre, string carrera);
 
         [OperationContract]
         Paciente  Datos_Paciente(int id);
 
         [OperationContract]
         void Actualizar_Medico(int id, string nombre, string apellido, string direccion, DateTime fec_nac,
-                                string correo, string usuario, int especialidad);
+                                string correo, int especialidad);
 
         [OperationContract]
         Doctor Datos_Medico(int id);
@@ -44,10 +44,13 @@ namespace Servicios
         int Id_Usuario(string usuario);
 
         [OperationContract]
-        List<Cita> Citas_Medico(int id);
+        List<Cita> Citas_Medico(int id,string d,string m,string a);
 
         [OperationContract]
-        List<Cita> Citas_Paciente(int id);
+        List<Cita> Citas_Paciente(int id, string d, string m, string a);
+
+        [OperationContract]
+        void Cambiar_Contraseña(int id, string contra);
 
     }
 }

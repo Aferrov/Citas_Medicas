@@ -32,8 +32,9 @@ namespace Citas_Medicas
         private void llenarTabla()
         {
             int id = (int)(Session["Id"]);
+            DateTime fecha=DateTime.Now;
             Service1Client client = new Service1Client();
-            IList<Cita> citas = client.Citas_Medico(id);
+            IList<Cita> citas = client.Citas_Medico(id, fecha.Day.ToString("D2"), fecha.Month.ToString("D2"),fecha.Year.ToString());
             int n = 1;
             foreach (Cita c in citas)
             {

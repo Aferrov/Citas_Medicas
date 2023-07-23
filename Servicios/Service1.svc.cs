@@ -32,10 +32,10 @@ namespace Servicios
         }
 
         public void Actualizar_Paciente(int id, string nombre, string apellido, string direccion, DateTime fec_nac,
-                                string correo, string usuario, int cui, int vac, string sangre, string carrera)
+                                string correo, int cui, int vac, string sangre, string carrera)
         {
             Paciente pac= new Paciente();
-            pac.Actualizar_Datos(id,nombre,apellido, direccion,fec_nac,correo, usuario, cui, vac,sangre,carrera);
+            pac.Actualizar_Datos(id,nombre,apellido, direccion,fec_nac,correo, cui, vac,sangre,carrera);
         }
         
         public Paciente Datos_Paciente(int id)
@@ -45,10 +45,10 @@ namespace Servicios
         }
         
         public void Actualizar_Medico(int id, string nombre, string apellido, string direccion, DateTime fec_nac,
-                                string correo, string usuario, int especialidad)
+                                string correo, int especialidad)
         {
             Doctor doc = new Doctor();
-            doc.Actualizar_Datos(id, nombre, apellido, direccion, fec_nac, correo, usuario, especialidad);
+            doc.Actualizar_Datos(id, nombre, apellido, direccion, fec_nac, correo, especialidad);
         }
 
         public Doctor Datos_Medico(int id)
@@ -69,16 +69,22 @@ namespace Servicios
             return usu.Id_Usuario(usuario);
         }
 
-        public List<Cita> Citas_Medico(int id)
+        public List<Cita> Citas_Medico(int id, string d, string m, string a)
         {
             Doctor doc = new Doctor();
-            return doc.Medico_Citas(id);
+            return doc.Medico_Citas(id,d,m,a);
         }
 
-        public List<Cita> Citas_Paciente(int id)
+        public List<Cita> Citas_Paciente(int id, string d, string m, string a)
         {
             Paciente pac = new Paciente();
-            return pac.Paciente_Citas(id);
+            return pac.Paciente_Citas(id,d,m,a);
+        }
+
+        public void Cambiar_Contraseña(int id, string contra)
+        {
+            Usuario usu=new Usuario();
+            usu.Cambiar_Contraseña(id, contra);
         }
     }
 }

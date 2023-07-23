@@ -59,7 +59,6 @@
         <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="fec_nac" type="xs:dateTime" />
         <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="cui" type="xs:int" />
         <xs:element minOccurs="0" name="vac" type="xs:int" />
         <xs:element minOccurs="0" name="sangre" nillable="true" type="xs:string" />
@@ -95,7 +94,6 @@
         <xs:element minOccurs="0" name="direccion" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="fec_nac" type="xs:dateTime" />
         <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="especialidad" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -149,6 +147,9 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="d" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="m" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="a" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -163,6 +164,9 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="d" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="m" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="a" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -171,6 +175,19 @@
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Base_Datos" minOccurs="0" name="Citas_PacienteResult" nillable="true" type="q5:ArrayOfCita" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Cambiar_Contraseña">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="contra" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Cambiar_ContraseñaResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

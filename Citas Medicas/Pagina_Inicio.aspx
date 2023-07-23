@@ -12,11 +12,7 @@
     <link rel="stylesheet" href="../css/slick.css"> 
     <title>Sistema de Citas</title>
     <link rel="icon" type="image/png" sizes="16x16" href="./img/logo.png">
-    <style>
-        table {
-            animation: transitionIn-Y-bottom 0.5s;
-        }
-    </style>
+    
 </head>
 <body>
     <div class="full-height">
