@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,17 +24,18 @@ namespace Citas_Medicas
             Session["Usuario"] = Usuario;
             Session["Id"] = Id;
         }
-        protected void btn_enviar_Click(object sender, EventArgs e)
+
+        private void Registrar()
         {
-            string nom=nombre.Text;
-            string ape=apellido.Text;
+            string nom = nombre.Text;
+            string ape = apellido.Text;
             string dir = direccion.Text;
-            DateTime fec= new DateTime(1920, 1, 1);
+            DateTime fec = new DateTime(1920, 1, 1);
             if (!string.IsNullOrEmpty(fec_nac.Text))
-                DateTime.Parse(fec_nac.Text);
-            string cor=correo.Text;
-            string usu=usuario.Text;
-            string con=new Password().Encriptar(contrasena.Text);
+                fec=DateTime.Parse(fec_nac.Text);
+            string cor = correo.Text;
+            string usu = usuario.Text;
+            string con = new Password().Encriptar(contrasena.Text);
             Service1Client client = new Service1Client();
             int id = client.Registrarse(nom, ape, dir, fec, cor, usu, con);
             int rol = client.Rol_Usuario(id);
@@ -49,6 +52,27 @@ namespace Citas_Medicas
                     break;
             }
             Response.Redirect("Inicio.aspx");
+        }
+        protected void btn_enviar_Click(object sender, EventArgs e)
+        {
+            string nom = nombre.Text;
+            string ape = apellido.Text;
+            string usu=usuario.Text;
+            Service1Client client = new Service1Client();
+            int id = client.Usario_Registrado(nom, ape, usu);
+            switch(id)
+            {
+                case 0:
+                    Registrar();
+                    break;
+                case 1:
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Nombre y Apellidos ya registrados');", true);
+                    break;
+                case 2:
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Usuario ya registrado');", true);
+                    break;
+            }
+                
         }
     }
 }

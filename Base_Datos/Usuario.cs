@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Diagnostics.Contracts;
 
 namespace Base_Datos
 {
@@ -71,6 +72,36 @@ namespace Base_Datos
                 connection.Close();
             }
             
+
+        }
+
+        public int Usuario_Registrado(string nom, string ape, string usu)
+        {
+            string connectionString = "Data Source=ARLEEN;" +
+                "Initial Catalog=CitasMedicas;Integrated Security=True";
+            int code;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("Usuario_Registrado", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Nombre", nom);
+                command.Parameters.AddWithValue("@Apellidos", ape);
+                command.Parameters.AddWithValue("@Usuario", usu);
+
+                SqlParameter parametroSalida = new SqlParameter("@Resultado", SqlDbType.Int);
+                parametroSalida.Direction = ParameterDirection.Output;
+                command.Parameters.Add(parametroSalida);
+
+                command.ExecuteNonQuery();
+
+                code = Convert.ToInt32(command.Parameters["@Resultado"].Value);
+
+
+                connection.Close();
+            }
+            return code;
 
         }
         public int Rol_Usuario(int id)

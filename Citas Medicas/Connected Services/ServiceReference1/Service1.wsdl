@@ -79,6 +79,18 @@
   <wsdl:message name="IService1_Cambiar_Contraseña_OutputMessage">
     <wsdl:part name="parameters" element="tns:Cambiar_ContraseñaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Horarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:Horarios" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Horarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HorariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Usario_Registrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:Usario_Registrado" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Usario_Registrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Usario_RegistradoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="Registrarse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Registrarse" message="tns:IService1_Registrarse_InputMessage" />
@@ -127,6 +139,14 @@
     <wsdl:operation name="Cambiar_Contraseña">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Cambiar_Contraseña" message="tns:IService1_Cambiar_Contraseña_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/Cambiar_ContraseñaResponse" message="tns:IService1_Cambiar_Contraseña_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Horarios" message="tns:IService1_Horarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/HorariosResponse" message="tns:IService1_Horarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Usario_Registrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Usario_Registrado" message="tns:IService1_Usario_Registrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Usario_RegistradoResponse" message="tns:IService1_Usario_Registrado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -232,6 +252,24 @@
     </wsdl:operation>
     <wsdl:operation name="Cambiar_Contraseña">
       <soap:operation soapAction="http://tempuri.org/IService1/Cambiar_Contraseña" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Horarios">
+      <soap:operation soapAction="http://tempuri.org/IService1/Horarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Usario_Registrado">
+      <soap:operation soapAction="http://tempuri.org/IService1/Usario_Registrado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

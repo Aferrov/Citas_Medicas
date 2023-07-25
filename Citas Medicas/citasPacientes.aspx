@@ -21,10 +21,10 @@
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
-                <tr>
+                <tbody><tr>
                     <td style="padding:10px" colspan="2">
                         <table border="0" class="profile-container">
-                            <tr>
+                            <tbody><tr>
                                 <td width="30%" style="padding-left:20px">
                                     <img src="../img/logo_azul.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
@@ -38,66 +38,64 @@
                                     <a href="Pagina_Inicio.aspx"><input type="button" value="Cerrar Sesión" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
-                        </table>
+                        </tbody></table>
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-inicio">
-                        <a href="inicioPaciente.aspx" class="non-style-link-menu">
-                            <div>
-                                <a href="inicioPaciente.aspx" class="non-style-link-menu">
-                                    <p class="menu-text">Inicio</p>
-                                </a>
-                            </div>
+                    <td class="menu-btn menu-icon-Inicio">
+                        <a href="inicioPaciente.aspx" class="non-style-link-menu ">
+                            </a><div><a href="inicioPaciente.aspx" class="non-style-link-menu">
+                                <p class="menu-text">Inicio</p>
                         </a>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-home menu-active menu-icon-home-active">
-                        <a href="citasPacientes.aspx" class="non-style-link-menu non-style-link-menu-active">
-                            <div>
-                                <p class="menu-text">Citas</p>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-historial">
-                        <a href="historial.aspx" class="non-style-link-menu">
-                            <div>
-                                <p class="menu-text">Mi Historial</p>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn menu-icon-configPacientes">
-                        <a href="configPaciente.aspx" class="non-style-link-menu">
-                            <div>
-                                <p class="menu-text">Configuración</p>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-            </table>
         </div>
+        </td>
+    </tr>
+    <tr class="menu-row">
+        <td class="menu-btn menu-icon-home menu-active menu-icon-home-active">
+            <a href="citasPacientes.aspx" class="non-style-link-menu non-style-link-menu-active">
+                <div>
+                    <p class="menu-text">Citas</p>
+                </div>
+            </a>
+        </td>
+    </tr>
+    <tr class="menu-row">
+        <td class="menu-btn menu-icon-historial">
+            <a href="historial.aspx" class="non-style-link-menu">
+                </a><div><a href="historial.aspx" class="non-style-link-menu">
+                    <p class="menu-text">Mi Historial</p>
+            </a></div>
+        </td>
+    </tr>
+    <tr class="menu-row">
+        <td class="menu-btn menu-icon-configPaciente">
+            <a href="configPaciente.aspx" class="non-style-link-menu">
+                </a><div><a href="configPaciente.aspx" class="non-style-link-menu">
+                    <p class="menu-text">Configuración</p>
+            </a></div>
+        </td>
+    </tr>
 
-        <div class="dash-body">
-            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-                <tr>
-                    <td width="13%">
+    </tbody></table>
+    </div>
+        
+        <div class="dash-body" style="margin-top: 15px">
+        <form id="form" runat="server">
+        <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;">
+
+            <tbody><tr>
+                    <td width="25%">
                         <a href="inicioPacientes.aspx"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
                             <font class="tn-in-text">Volver</font>
                         </button></a>
                     </td>
                     <td>
-                        <form action="" method="post" class="header-search">
-                            <input type="search" name="search" class="input-text header-searchbar" placeholder="Buscar nombre del doctor o correo electrónico" list="doctors">&nbsp;&nbsp;
+                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Buscar nombre del doctor o correo electrónico" list="doctors">&nbsp;&nbsp;
                             <datalist id="doctors">
-                                <!-- Options for doctors list -->
+                                
                             </datalist>
                             <input type="Submit" value="Búsqueda" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
-                        </form>
+                        
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
@@ -109,154 +107,65 @@
                         <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                     </td>
                 </tr>
-                <tr>
-          <td colspan="3">
-            <div style="text-align: center; margin-top: 20px;">
-              <select id="specialty-select">
-                <option value="Cardiología">Cardiología</option>
-                <option value="Dermatología">Dermatología</option>
-                <option value="Gastroenterología">Gastroenterología</option>
-                <option value="Pediatría">Pediatría</option>
-                <option value="Neurología">Neurología</option>
-              </select>
-              <button onclick="showSchedule()">Buscar</button>
-            </div>
-          </td>
-        </tr>
-                <tr>
-                    <td colspan="3">
-            <center>
-              <div class="abc scroll">
+            <tr>
+                <td>
+                    <asp:Label ID="Label1" runat="server" Text="Especialidades:"></asp:Label>
+                    
+                </td>
+                <td>
+                    <asp:DropDownList ID="list_especialidades" runat="server" OnSelectedIndexChanged="list_especialidades_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                </td>
+                
+
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label2" runat="server" Text="Horario:"></asp:Label>
+                    
+                </td>
+                <td>
+                    <asp:DropDownList ID="list_Horarios" runat="server" AutoPostBack="true"></asp:DropDownList>
+                </td>
+                <td>
+                    <asp:Label ID="Label3" runat="server" Text="Médicos:"></asp:Label>
+                    
+                </td>
+                <td>
+                    <asp:DropDownList ID="list_Doctores" runat="server"  AutoPostBack="true"></asp:DropDownList>
+                </td>
+                <td>
+                    <asp:Button ID="BtnReservar" runat="server" Text="Reservar Cita" />
+                </td>
+            </tr>
+            <tr>
+                
+                <td colspan="4">
+
+                    <center>
+                        
+                        <div class="abc scroll">
                 <div class="schedule-container">
                   <p class="schedule-heading">Horario:</p>
-                  <table class="schedule-table">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                      </tr>
-                    </thead>
-                    <tbody id="schedule-body">
-                      <!-- Aquí se generará el horario -->
-                    </tbody>
-                  </table>
+                    <asp:Table ID="TableHorario" runat="server">
+                        <asp:TableHeaderRow>
+                                        <asp:TableHeaderCell>Horas</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Lunes</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Martes</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Miercoles</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Jueves</asp:TableHeaderCell>
+                                        <asp:TableHeaderCell>Viernes</asp:TableHeaderCell>
+                                    </asp:TableHeaderRow>
+                    </asp:Table>
                 </div>
               </div>
-            </center>
-          </td>
-        </tr>
-        
-      </table>
+                    </center>
+            </tbody>
+        </form>
     </div>
+      
+     
   </div>
 
-   <script>
-       // Función para mostrar el horario correspondiente a la especialidad seleccionada
-       function showSchedule() {
-           var specialtySelect = document.getElementById("specialty-select");
-           var selectedSpecialty = specialtySelect.value;
-           var scheduleBody = document.getElementById("schedule-body");
-           scheduleBody.innerHTML = "";
-
-           // Obtener los doctores y horas correspondientes a la especialidad seleccionada
-           var doctors = getDoctorsBySpecialty(selectedSpecialty);
-
-           // Generar el horario
-           var hours = ["8:00 am", "8:15 am", "8:30 am", "8:45 am", "9:00 am", "9:15 am", "9:30 am", "9:45 am", "10:00 am", "10:15 am", "10:30 am", "10:45 am", "11:00 am", "11:15 am", "11:30 am", "11:45 am", "12:00 pm", "12:15 pm", "12:30 pm", "12:45 pm", "1:00 pm", "1:15 pm", "1:30 pm", "1:45 pm", "2:00 pm"];
-
-           var isReserved = isHourReserved(doctorIndex, j + 1, timeString);
-           if (isReserved) {
-               cell.classList.add("reserved-cell");
-           }
-
-           for (var i = 0; i < hours.length; i++) {
-               var timeString = hours[i];
-
-               var row = document.createElement("tr");
-               var timeCell = document.createElement("td");
-               timeCell.innerText = timeString;
-               row.appendChild(timeCell);
-
-               for (var j = 0; j < 5; j++) {
-                   var doctorIndex = doctors.findIndex(
-                       (doctor) => doctor.hours.includes(timeString) && doctor.days.includes(j + 1)
-                   );
-
-                   var cell = document.createElement("td");
-                   var cellContent = "";
-
-                   if (doctorIndex >= 0) {
-                       cellContent = doctors[doctorIndex].name;
-                       cell.classList.add("doctor-cell");
-                   }
-
-                   // Verificar si la hora está reservada
-                   var isReserved = isHourReserved(doctorIndex, j + 1, timeString);
-                   if (isReserved) {
-                       cell.classList.add("reserved-cell");
-                   }
-
-
-                   cell.innerText = cellContent;
-                   row.appendChild(cell);
-               }
-
-               scheduleBody.appendChild(row);
-           }
-       }
-
-       // Función para obtener los doctores y horas correspondientes a la especialidad seleccionada
-       function getDoctorsBySpecialty(specialty) {
-           // Aquí puedes definir tus propios datos de doctores y especialidades
-           var doctors = [
-               { name: "Dr. Juan Pérez", specialty: "Cardiología", hours: ["8:00 am", "10:00 am", "11:30 am"], days: [2, 3, 4] },
-               { name: "Dra. María Gómez", specialty: "Dermatología", hours: ["9:30 am", "1:00 pm"], days: [1, 3] },
-               { name: "Dr. Pedro Rodríguez", specialty: "Gastroenterología", hours: ["8:00 am", "9:00 am", "11:00 am"], days: [1, 2, 5] },
-               { name: "Dra. Laura García", specialty: "Pediatría", hours: ["10:30 am", "1:30 pm"], days: [1, 4] },
-               { name: "Dr. Roberto Sánchez", specialty: "Neurología", hours: ["8:15 am", "10:45 am", "12:30 pm"], days: [2, 3, 5] },
-               { name: "Dra. Ana López", specialty: "Neurología", hours: ["9:00 am", "11:15 am", "1:45 pm"], days: [1, 4, 5] },
-               { name: "Dr. Andrés Torres", specialty: "Cardiología", hours: ["9:00 am", "11:30 am"], days: [1, 2] },
-               { name: "Dra. Patricia Mendoza", specialty: "Dermatología", hours: ["8:30 am", "10:00 am", "12:45 pm"], days: [1, 3, 5] },
-               { name: "Dr. Miguel Fernández", specialty: "Gastroenterología", hours: ["8:00 am", "9:45 am", "11:30 am"], days: [2, 4, 5] },
-               { name: "Dra. Carolina Ramos", specialty: "Pediatría", hours: ["10:00 am", "12:00 pm", "1:30 pm"], days: [1, 2, 3] },
-               { name: "Dr. Carlos Medina", specialty: "Neurología", hours: ["9:15 am", "11:45 am", "1:00 pm"], days: [3, 4, 5] },
-               { name: "Dr. Juan López", specialty: "Gastroenterología", hours: ["8:30 am"], days: [1] },
-
-           ];
-
-           return doctors.filter(doctor => doctor.specialty === specialty);
-       }
-
-       // Función para verificar si la hora está reservada
-       function isHourReserved(doctorIndex, day, time) {
-           var reservedHours = [
-               { doctorIndex: 0, day: 3, time: "10:00 am" },//
-               { doctorIndex: 0, day: 2, time: "11:30 am" },
-               { doctorIndex: 1, day: 5, time: "8:30 am" },
-               { doctorIndex: 2, day: 1, time: "8:30 am" }, //
-               { doctorIndex: 3, day: 1, time: "10:00 am" },
-               { doctorIndex: 4, day: 5, time: "8:15 am" },
-               
-           ];
-
-           var reservedHour = reservedHours.find(reservedHour => reservedHour.doctorIndex === doctorIndex && reservedHour.day === day && reservedHour.time === time);
-           return reservedHour !== undefined;
-       }
-   </script>
-
-
-
-                            </div>
-                        </center>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
 </body>
 
 </html>

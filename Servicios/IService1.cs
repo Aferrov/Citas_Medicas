@@ -51,6 +51,12 @@ namespace Servicios
 
         [OperationContract]
         void Cambiar_Contraseña(int id, string contra);
+        
+        [OperationContract]
+        List<Horario> Horarios(string anio, string diainicio, string diafin, string mes, int esp);
+
+        [OperationContract]
+        int Usario_Registrado(string nom, string ape, string usu);
 
     }
 }

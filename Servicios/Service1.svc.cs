@@ -86,5 +86,17 @@ namespace Servicios
             Usuario usu=new Usuario();
             usu.Cambiar_Contraseña(id, contra);
         }
+
+        public List<Horario> Horarios(string anio, string diainicio, string diafin, string mes, int esp)
+        {
+            Horario horario = new Horario();
+            return horario.Horarios_Ocupados(anio,diainicio,diafin,mes,esp);
+        }
+
+        public int Usario_Registrado(string nom, string ape, string usu)
+        {
+            Usuario usuario = new Usuario();
+            return usuario.Usuario_Registrado(nom,ape,usu);
+        }
     }
 }

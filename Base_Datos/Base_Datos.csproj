@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Cita.cs" />
     <Compile Include="Doctor.cs" />
+    <Compile Include="Horario.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="Especialidad.cs" />
     <Compile Include="Usuario.cs" />

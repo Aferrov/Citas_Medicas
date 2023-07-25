@@ -190,4 +190,38 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="Horarios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="anio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="diainicio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="diafin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mes" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="esp" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HorariosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Base_Datos" minOccurs="0" name="HorariosResult" nillable="true" type="q6:ArrayOfHorario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Usario_Registrado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nom" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ape" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="usu" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Usario_RegistradoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Usario_RegistradoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

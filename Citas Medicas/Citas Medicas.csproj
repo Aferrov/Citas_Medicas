@@ -247,6 +247,7 @@
     <Content Include="Properties\DataSources\Base_Datos.Paciente.datasource" />
     <Content Include="Properties\DataSources\Base_Datos.Doctor.datasource" />
     <Content Include="Properties\DataSources\Base_Datos.Especialidad.datasource" />
+    <Content Include="Properties\DataSources\Base_Datos.Horario.datasource" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

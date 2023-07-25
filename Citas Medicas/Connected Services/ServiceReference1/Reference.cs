@@ -86,6 +86,18 @@ namespace Citas_Medicas.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Cambiar_Contraseña", ReplyAction="http://tempuri.org/IService1/Cambiar_ContraseñaResponse")]
         System.Threading.Tasks.Task Cambiar_ContraseñaAsync(int id, string contra);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Horarios", ReplyAction="http://tempuri.org/IService1/HorariosResponse")]
+        Base_Datos.Horario[] Horarios(string anio, string diainicio, string diafin, string mes, int esp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Horarios", ReplyAction="http://tempuri.org/IService1/HorariosResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Horario[]> HorariosAsync(string anio, string diainicio, string diafin, string mes, int esp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usario_Registrado", ReplyAction="http://tempuri.org/IService1/Usario_RegistradoResponse")]
+        int Usario_Registrado(string nom, string ape, string usu);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usario_Registrado", ReplyAction="http://tempuri.org/IService1/Usario_RegistradoResponse")]
+        System.Threading.Tasks.Task<int> Usario_RegistradoAsync(string nom, string ape, string usu);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -209,6 +221,22 @@ namespace Citas_Medicas.ServiceReference1 {
         
         public System.Threading.Tasks.Task Cambiar_ContraseñaAsync(int id, string contra) {
             return base.Channel.Cambiar_ContraseñaAsync(id, contra);
+        }
+        
+        public Base_Datos.Horario[] Horarios(string anio, string diainicio, string diafin, string mes, int esp) {
+            return base.Channel.Horarios(anio, diainicio, diafin, mes, esp);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Horario[]> HorariosAsync(string anio, string diainicio, string diafin, string mes, int esp) {
+            return base.Channel.HorariosAsync(anio, diainicio, diafin, mes, esp);
+        }
+        
+        public int Usario_Registrado(string nom, string ape, string usu) {
+            return base.Channel.Usario_Registrado(nom, ape, usu);
+        }
+        
+        public System.Threading.Tasks.Task<int> Usario_RegistradoAsync(string nom, string ape, string usu) {
+            return base.Channel.Usario_RegistradoAsync(nom, ape, usu);
         }
     }
 }
