@@ -53,7 +53,8 @@ namespace Citas_Medicas
                 tableCell2.Text = c.Fecha;
                 tableRow.Cells.Add(tableCell2);
                 tableRow.CssClass = "texto";
-
+                if(!c.Estado)
+                    tableRow.BackColor = System.Drawing.Color.Red;
                 citas_paciente.Rows.Add(tableRow);
                 n++;
             }

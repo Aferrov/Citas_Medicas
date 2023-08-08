@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Base_Datos;
@@ -53,25 +54,19 @@ namespace Citas_Medicas
             }
             Response.Redirect("Inicio.aspx");
         }
+
+        [WebMethod]
+        public static int UsuarioRegistrado(String nom, String ape, String usu)
+        {
+            Service1Client client = new Service1Client();
+            return client.Usario_Registrado(nom, ape, usu); ;
+        }
         protected void btn_enviar_Click(object sender, EventArgs e)
         {
             string nom = nombre.Text;
             string ape = apellido.Text;
             string usu=usuario.Text;
-            Service1Client client = new Service1Client();
-            int id = client.Usario_Registrado(nom, ape, usu);
-            switch(id)
-            {
-                case 0:
-                    Registrar();
-                    break;
-                case 1:
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Nombre y Apellidos ya registrados');", true);
-                    break;
-                case 2:
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Usuario ya registrado');", true);
-                    break;
-            }
+            Registrar();
                 
         }
     }

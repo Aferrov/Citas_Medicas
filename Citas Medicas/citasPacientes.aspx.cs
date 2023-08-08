@@ -144,9 +144,22 @@ namespace Citas_Medicas
         {
             DateTime hoy = DateTime.Today;
             int numeroDiaSemana = (int)hoy.DayOfWeek;
-            int diasHastaLunes = ((int)DayOfWeek.Monday - numeroDiaSemana + 7) % 7;
-            DateTime fechaLunes = hoy.AddDays(diasHastaLunes);
-            fechaLunes = hoy.AddDays(-4);
+            int diasHastaLunes;
+
+            if (numeroDiaSemana == (int)DayOfWeek.Saturday || numeroDiaSemana == (int)DayOfWeek.Sunday)
+            {
+                diasHastaLunes = ((int)DayOfWeek.Monday - numeroDiaSemana + 7) % 7;
+            }
+            else
+            {
+                diasHastaLunes = numeroDiaSemana - (int)DayOfWeek.Monday;
+                if (diasHastaLunes < 0)
+                {
+                    diasHastaLunes += 7;
+                }
+            }
+
+            DateTime fechaLunes = hoy.AddDays(-diasHastaLunes);
             return fechaLunes;
         }
 
@@ -319,7 +332,7 @@ namespace Citas_Medicas
             DateTime lunes = ObtenerFechaLunes();
             DateTime primerDiaProximoMes = new DateTime(lunes.Year, lunes.Month, 1).AddMonths(1);
             DateTime ultimoDiaMesActual = primerDiaProximoMes.AddDays(-1);
-            if (ultimoDiaMesActual.Day - dia > 4)
+            if (ultimoDiaMesActual.Day - dia < 4)
                 mes_ = primerDiaProximoMes.ToString("MM");
             else
                 mes_ = lunes.ToString("MM");
@@ -360,7 +373,7 @@ namespace Citas_Medicas
                     client.Nueva_Cita(anio, mes, dia, hora, minutos, medico, id);
                     int indiceSeleccionado = list_Horarios.SelectedIndex;
                     string horacompleta2= list_Horarios.Items[indiceSeleccionado + 1].Value;
-                    string[] partes2 = horaCompleta.Split(':');
+                    string[] partes2 = horacompleta2.Split(':');
                     string hora2 = partes2[0];
                     string minutos2 = partes2[1];
                     client.Nueva_Cita(anio, mes, dia, hora2, minutos2, medico, id);

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/registro.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="./img/logo.png">
 
     <title>Regístrate</title>
@@ -19,6 +20,77 @@
             height: 50px;
         }
     </style>
+    <script type="text/javascript">
+    
+    function validar_Contenido() {
+        var nom, ape, usu, con;
+        nom = document.getElementById("nombre").value;
+        ape = document.getElementById("apellido").value;
+        usu = document.getElementById("usuario").value;
+        con = document.getElementById("contrasena").value;
+
+        if (/^[a-zA-ZñÑ\s]+$/.test(nom) == false) {
+            alert("Error en Nombres");
+            document.getElementById("nombre").value = "";
+            
+        }
+        else if (/^[a-zA-ZñÑ\s]+$/.test(ape) == false) {
+            alert("Error en Apellidos");
+            document.getElementById("apellido").value = "";
+            
+        }
+        else if (string.IsNullOrEmpty(usu)) {
+             mostrarAlert("Usuario no puede ser vacio");
+             
+        }
+        else if (usu.Length > 15)
+        {
+            mostrarAlert("Usuario no puede ser mayor a 15 caracteres");
+        }
+        else if (string.IsNullOrEmpty(con)) {
+            mostrarAlert("Contraseña no puede ser vacio");
+
+        }
+        else if (con.Length > 15) {
+            mostrarAlert("Contraseña no puede ser mayor a 15 caracteres");
+        }
+         else {
+                 alert("Usuario registrado");
+                 return true;
+
+             }
+        return false;
+    }
+            
+    function callAjax() {
+        let send1 = $("#nombre").val();
+        let send2 = $("#apellido").val();
+        let send3 = $("#usuario").val();
+        $.ajax({
+            url: 'Registro.aspx/UsuarioRegistrado',
+            type: 'POST',
+            async: true,
+            data: '{ "nom" : "' + send1 + '", "ape" : "' + send2 + '", "usu" : "'+ send3+'"}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response.d == 0) {
+                    $("#btn_enviar").show();
+                    
+                } else if (response.d == 1) {
+                    alert("Nombre y Apellidos ya registrados!");
+                    $("#btn_enviar").hide();
+                }
+                else if (response.d == 2) {
+                    alert("Usuario ya Registrado!");
+                    $("#btn_enviar").hide();
+                }
+            }
+        });
+        return false;
+    }
+    
+    </script>
 
 </head>
 
@@ -85,7 +157,7 @@
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <asp:TextBox ID="usuario" class="input-text" placeholder="Usuario" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="usuario" onBlur="return callAjax();" class="input-text" placeholder="Usuario" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -101,7 +173,7 @@
 
                 <tr>
                     <td colspan="2" class="auto-style1">
-                        <asp:Button ID="btn_enviar" class="login-btn btn-primary btn" runat="server" Text="Enviar" OnClick="btn_enviar_Click" />
+                        <asp:Button ID="btn_enviar" class="login-btn btn-primary btn" runat="server" Text="Enviar" OnClientClick="return validar_Contenido();" OnClick="btn_enviar_Click" />
            
                     </td>
 

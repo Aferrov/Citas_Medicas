@@ -50,7 +50,6 @@ namespace Citas_Medicas
                 smtpClient.UseDefaultCredentials= false;
                 smtpClient.Port = 25; 
                 smtpClient.Credentials = new NetworkCredential("citasmedicas89@gmail.com", "citasmed89");
-                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors) { return true; };
                 smtpClient.EnableSsl = true;
 
                 MailMessage mailMessage = new MailMessage();
@@ -146,7 +145,7 @@ namespace Citas_Medicas
             client.Update_Cita(citaId, false, null);
             row.BackColor = System.Drawing.Color.Red;
             cancelButton.Enabled = false;
-            EnviarCorreo(pacId,fecha);
+            //EnviarCorreo(pacId,fecha);
         }
         protected void btn_Cerrar_Click(object sender, EventArgs e)
         {

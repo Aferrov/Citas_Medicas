@@ -108,6 +108,7 @@ namespace Base_Datos
                     cita_.Especialidad = reader["Especialidad"].ToString();
                     cita_.Fecha = reader["Fecha"].ToString();
                     cita_.Diagnostico = reader["Diagnostico"].ToString();
+                    cita_.Estado = Convert.ToBoolean(reader["Estado"]);
                     citas.Add(cita_);
                 }
                 connection.Close();

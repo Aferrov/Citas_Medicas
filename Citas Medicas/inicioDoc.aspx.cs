@@ -63,8 +63,11 @@ namespace Citas_Medicas
                 ButtonCell.Controls.Add(cancelButton);  
                 tableRow.Cells.Add(ButtonCell);
                 tableRow.CssClass = "texto";
-
-
+                if (!c.Estado)
+                {
+                    tableRow.BackColor = System.Drawing.Color.Red;
+                    cancelButton.Enabled = false;
+                }
                 citas_medico.Rows.Add(tableRow);
                 n++;
             }
