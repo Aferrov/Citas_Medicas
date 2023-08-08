@@ -58,5 +58,23 @@ namespace Servicios
         [OperationContract]
         int Usario_Registrado(string nom, string ape, string usu);
 
+        [OperationContract]
+        List<Doctor> Medicos_Especialidad(int especialidad);
+
+        [OperationContract]
+        void Nueva_Cita(string anio, string mes, string dia, string hora, string minutos, int medico, int paciente);
+
+        [OperationContract]
+        void Update_Cita(int id, bool estado, string diagnostico);
+        
+        [OperationContract]
+        List<String> Meses();
+
+        [OperationContract]
+        List<Reporte> Cantidad_Citas(int id, string mes);
+        
+        [OperationContract]
+        string Correo_Usuario(int id);
+
     }
 }

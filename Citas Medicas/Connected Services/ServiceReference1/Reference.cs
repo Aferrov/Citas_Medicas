@@ -98,6 +98,42 @@ namespace Citas_Medicas.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usario_Registrado", ReplyAction="http://tempuri.org/IService1/Usario_RegistradoResponse")]
         System.Threading.Tasks.Task<int> Usario_RegistradoAsync(string nom, string ape, string usu);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Medicos_Especialidad", ReplyAction="http://tempuri.org/IService1/Medicos_EspecialidadResponse")]
+        Base_Datos.Doctor[] Medicos_Especialidad(int especialidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Medicos_Especialidad", ReplyAction="http://tempuri.org/IService1/Medicos_EspecialidadResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Doctor[]> Medicos_EspecialidadAsync(int especialidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Nueva_Cita", ReplyAction="http://tempuri.org/IService1/Nueva_CitaResponse")]
+        void Nueva_Cita(string anio, string mes, string dia, string hora, string minutos, int medico, int paciente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Nueva_Cita", ReplyAction="http://tempuri.org/IService1/Nueva_CitaResponse")]
+        System.Threading.Tasks.Task Nueva_CitaAsync(string anio, string mes, string dia, string hora, string minutos, int medico, int paciente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Update_Cita", ReplyAction="http://tempuri.org/IService1/Update_CitaResponse")]
+        void Update_Cita(int id, bool estado, string diagnostico);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Update_Cita", ReplyAction="http://tempuri.org/IService1/Update_CitaResponse")]
+        System.Threading.Tasks.Task Update_CitaAsync(int id, bool estado, string diagnostico);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Meses", ReplyAction="http://tempuri.org/IService1/MesesResponse")]
+        string[] Meses();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Meses", ReplyAction="http://tempuri.org/IService1/MesesResponse")]
+        System.Threading.Tasks.Task<string[]> MesesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Cantidad_Citas", ReplyAction="http://tempuri.org/IService1/Cantidad_CitasResponse")]
+        Base_Datos.Reporte[] Cantidad_Citas(int id, string mes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Cantidad_Citas", ReplyAction="http://tempuri.org/IService1/Cantidad_CitasResponse")]
+        System.Threading.Tasks.Task<Base_Datos.Reporte[]> Cantidad_CitasAsync(int id, string mes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Correo_Usuario", ReplyAction="http://tempuri.org/IService1/Correo_UsuarioResponse")]
+        string Correo_Usuario(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Correo_Usuario", ReplyAction="http://tempuri.org/IService1/Correo_UsuarioResponse")]
+        System.Threading.Tasks.Task<string> Correo_UsuarioAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -237,6 +273,54 @@ namespace Citas_Medicas.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> Usario_RegistradoAsync(string nom, string ape, string usu) {
             return base.Channel.Usario_RegistradoAsync(nom, ape, usu);
+        }
+        
+        public Base_Datos.Doctor[] Medicos_Especialidad(int especialidad) {
+            return base.Channel.Medicos_Especialidad(especialidad);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Doctor[]> Medicos_EspecialidadAsync(int especialidad) {
+            return base.Channel.Medicos_EspecialidadAsync(especialidad);
+        }
+        
+        public void Nueva_Cita(string anio, string mes, string dia, string hora, string minutos, int medico, int paciente) {
+            base.Channel.Nueva_Cita(anio, mes, dia, hora, minutos, medico, paciente);
+        }
+        
+        public System.Threading.Tasks.Task Nueva_CitaAsync(string anio, string mes, string dia, string hora, string minutos, int medico, int paciente) {
+            return base.Channel.Nueva_CitaAsync(anio, mes, dia, hora, minutos, medico, paciente);
+        }
+        
+        public void Update_Cita(int id, bool estado, string diagnostico) {
+            base.Channel.Update_Cita(id, estado, diagnostico);
+        }
+        
+        public System.Threading.Tasks.Task Update_CitaAsync(int id, bool estado, string diagnostico) {
+            return base.Channel.Update_CitaAsync(id, estado, diagnostico);
+        }
+        
+        public string[] Meses() {
+            return base.Channel.Meses();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> MesesAsync() {
+            return base.Channel.MesesAsync();
+        }
+        
+        public Base_Datos.Reporte[] Cantidad_Citas(int id, string mes) {
+            return base.Channel.Cantidad_Citas(id, mes);
+        }
+        
+        public System.Threading.Tasks.Task<Base_Datos.Reporte[]> Cantidad_CitasAsync(int id, string mes) {
+            return base.Channel.Cantidad_CitasAsync(id, mes);
+        }
+        
+        public string Correo_Usuario(int id) {
+            return base.Channel.Correo_Usuario(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> Correo_UsuarioAsync(int id) {
+            return base.Channel.Correo_UsuarioAsync(id);
         }
     }
 }

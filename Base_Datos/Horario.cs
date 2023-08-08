@@ -35,6 +35,7 @@ namespace Base_Datos
                     hor.Medico = reader["Medico"].ToString();
                     hor.Hora = reader["Hora"].ToString();
                     hor.Minutos = reader["Minutos"].ToString();
+                    hor.Mes = reader["Mes"].ToString();
                     hor.Dia = reader["Dia"].ToString();
                     horario.Add(hor);
                 }
@@ -43,6 +44,9 @@ namespace Base_Datos
             return horario;
 
         }
+
+
+        public int Id { get; set; }
         public string Dia { get; set; }
         public string Mes { get; set; }
         public string Anio { get; set; }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="docInfo.aspx.cs" Inherits="Citas_Medicas.WebForm19" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="docReporte.aspx.cs" Inherits="Citas_Medicas.WebForm24" %>
 
 
 <!DOCTYPE html>
@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
-
-    <title>Configuración</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Reportes</title>
     <script>
         function modoOscuro() {
             var cookies = document.cookie.split(';');
             var darkValue = null;
-            var usu = document.getElementById('<%= Cookie.ClientID %>').innerText;;
+            var usu = document.getElementById('<%= Cookie.ClientID %>').innerText;
             var usuario = usu + '=';
             for (var i = 0; i < cookies.length; i++) {
                 var cookie = cookies[i].trim();
@@ -51,10 +51,10 @@
 
         document.addEventListener('DOMContentLoaded', modoOscuro);
     </script>
+    
 </head>
 
 <body>
-    <form id="form1" runat="server">
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
@@ -99,106 +99,120 @@
                         </td>
                     </tr>
                     <tr class="menu-row">
-                        <td class="menu-btn menu-icon-configPaciente menu-active menu-icon-configPaciente-active">
-                            <a href="configPaciente.aspx" class="non-style-link-menu non-style-link-menu-active">
-                                </a><div><a href="configPaciente.aspx" class="non-style-link-menu non-style-link-menu-active">
+                        <td class="menu-btn menu-icon-configPaciente">
+                            <a href="configDoc.aspx" class="non-style-link-menu">
+                                </a><div><a href="configDoc.aspx" class="non-style-link-menu">
                                     <p class="menu-text">Configuración</p>
                             </a></div>
                         </td>
                     </tr>
-               
+                    <tr class="menu-row">
+                        <td class="menu-btn menu-icon-home menu-active menu-icon-configPaciente-active">
+                            <a href="docReporte.aspx" class="non-style-link-menu non-style-link-menu-active">
+                                </a><div><a href="docReporte.aspx" class="non-style-link-menu non-style-link-menu-active">
+                                    <p class="menu-text">Reportes</p>
+                            </a>
+                        </div>
+                        </td>
+                    </tr>
 
                 </tbody></table>
                 </div>
 
 
 
-
+        <div class="container">
         <div class="dash-body" style="margin-top: 0px">
+            
+    
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;">
-
+                <form id="form1" runat="server">
              
                     <center>
         
-        <div >
+        <div>
             <table border="0">
-                <tr>
-                        <td class="label-td" colspan="2">
-                            <label for="name" class="form-label">Nombre: </label>
-                        </td>
-                </tr>
-                <tr>
-                    <td class="label-td">
-                        <asp:TextBox ID="nombre" class="input-text" placeholder="Nombre" runat="server"></asp:TextBox>
+                <tbody><tr>
+                    <td width="25%">
+                        <a href="inicioPacientes.aspx"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
+                            <font class="tn-in-text">Volver</font>
+                        </button></a>
                     </td>
-                    <td class="label-td">
-                        <asp:TextBox ID="apellido" class="input-text" placeholder="Apellido" runat="server"></asp:TextBox>
+                    
+                    <td width="15%">
+                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
+                            Fecha
+                        </p>
+                        <asp:Label ID="Fecha_Actual" runat="server" Text="Label"></asp:Label>
                     </td>
-                </tr>
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <label for="address" class="form-label">Dirección: </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <asp:TextBox ID="direccion" class="input-text" placeholder="Dirección" runat="server"></asp:TextBox>
+                    <td width="10%">
+                        <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                     </td>
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <label for="dob" class="form-label">Fecha de Nacimiento: </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <asp:TextBox ID="fec_nac" TextMode="Date" placeholder="Fecha de Nacimiento" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <label for="dob" class="form-label">Correo: </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <asp:TextBox ID="correo" class="input-text" placeholder="Correo" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <label for="dob" class="form-label">Especialidad: </label>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td class="label-td" colspan="2">
-                        <asp:DropDownList ID="list_esp"  runat="server">
+                        <asp:DropDownList ID="list_Mes"  runat="server" AutoPostBack="true">
                         </asp:DropDownList>
                         
                     </td>
                 </tr>
-
                 <tr>
-                    <td colspan="2" class="auto-style1">
-                        <asp:Button ID="btn_editar" class="login-btn btn-primary btn" runat="server" Text="Editar" OnClick="btn_editar_Click" />
-           
-                    </td>
-
+                    <div id="grafico" ></div>
                 </tr>
                
-
+            </form>
             </table>
-
+            
         </div>
 
         
     </center>
-      
-        
 
 
             </table>
         </div>
+        </div>
     </div>
-    </form>
+    <script>
+        console.log(datos);
+        //var datos = [10, 20, 30, 40, 50];
+        // Ancho y alto del gráfico
+        var ancho = 400;
+        var alto = 200;
+
+        // Escala para ajustar los datos al tamaño del gráfico
+        var escala = d3.scaleLinear()
+            .domain([0, 20])
+            .range([0, alto]);
+
+        // Crear el lienzo SVG para el gráfico
+        var lienzo = d3.select("#grafico")
+            .append("svg")
+            .attr("width", ancho)
+            .attr("height", alto);
+
+        // Crear las barras en el gráfico
+        lienzo.selectAll("rect")
+            .data(datos)
+            .enter()
+            .append("rect")
+            .attr("x", function (d, i) { return i * 60; }) // Espaciado entre las barras
+            .attr("y", function (d) { return alto - escala(d); })
+            .attr("width", 50) // Ancho de las barras
+            .attr("height", function (d) { return escala(d); })
+            .attr("fill", "steelblue"); // Color de las barras (puedes cambiarlo)
+
+        // Agregar etiquetas a las barras
+        lienzo.selectAll("text")
+            .data(datos)
+            .enter()
+            .append("text")
+            .text(function (d) { return d; }) // Texto de la etiqueta (en este caso, mostramos el valor de cada dato)
+            .attr("x", function (d, i) { return i * 60 + 25; }) // Posición x de la etiqueta (centrado en la barra)
+            .attr("y", function (d) { return alto - escala(d) - 5; }) // Posición y de la etiqueta (5 píxeles por encima de la barra)
+            .attr("text-anchor", "middle") // Alineación del texto en el centro
+            .attr("font-size", "12px") // Tamaño de fuente del texto
+            .attr("fill", "black"); // Color de fuente del texto
+    </script>
+    </body>
+    </html>

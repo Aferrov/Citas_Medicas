@@ -11,7 +11,61 @@
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
     <title>Inicio</title>
-    
+    <script>
+        function modoOscuro() {
+            var cookies = document.cookie.split(';');
+            var darkValue = null;
+            var usu = document.getElementById('<%= Cookie.ClientID %>').innerText;;
+            var usuario = usu + '=';
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(usuario) === 0) {
+                    darkValue = cookie.substring(usuario.length);
+                    break;
+                }
+            }
+            if (darkValue == "True") {
+                document.body.style.backgroundColor = "black";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "white";
+                });
+            }
+            else
+            {
+                document.body.style.backgroundColor = "white";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "black";
+                });
+            }
+            return false;
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', modoOscuro);
+    </script>
+    <style>
+      #informacion {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+      }
+        .auto-style1 {
+            height: 28px;
+        }
+        .auto-style2 {
+            width: 25%;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,11 +77,12 @@
                         <table border="0" class="profile-container">
                             <tbody><tr>
                                 <td width="30%" style="padding-left:20px">
+                                    <asp:Label ID="Cookie" runat="server" style="display: none" Text="Label"></asp:Label>
                                     <img src="../img/logo_azul.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <asp:Label ID="LabelNombre" runat="server" Text="Nombre"></asp:Label>
-                                    <asp:Label ID="LabelCorreo" runat="server" Text="Correo"></asp:Label>
+                                    <asp:Label ID="LabelNombre" CssClass="texto" runat="server" Text="Nombre"></asp:Label>
+                                    <asp:Label ID="LabelCorreo" CssClass="texto" runat="server" Text="Correo"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -80,10 +135,10 @@
                     <td colspan="1" class="nav-bar">
                         <p style="font-size: 32px; padding-left:12px; font-weight: 600; margin-left:20px;">Pacientes</p>
                     </td>
-                    <td width="25%"></td>
+                    <td class="auto-style2"></td>
                     <td width="15%">
                         <p style="font-size: 14px; color: rgb(119, 119, 119); padding: 0; margin: 0; text-align: right;">Fecha</p>
-                        <p class="heading-sub12" style="padding: 0; margin: 0;">2023-06-27</p>
+                        <asp:Label ID="fechaActual" runat="server" Text="Label"></asp:Label>
                     </td>
                     <td width="10%">
                         <button class="btn-label" style="display: flex; justify-content: center; align-items: center;">
@@ -93,10 +148,10 @@
                 </tr>
                 
                 <tr>
-                    <td class="label-td" colspan="2">
+                    <td class="auto-style1" colspan="2">
                         Fecha:
                     </td>
-                    <td class="label-td" colspan="2">
+                    <td class="auto-style1" colspan="2">
                         <input type="text" name="fecha" class="input-text" required>
                     </td>
                 </tr>
@@ -113,16 +168,70 @@
                     <button class="btn-primary-soft btn" onclick="buscar()">Buscar</button>
                 </td>
             </tr>
-            </tbody>
-
-
-
-                </td>
-            </tr>
         
             <tr>
                 <td colspan="4">
                     <form runat="server">
+                    <div id="informacion" style="display: none;" runat="server">
+                      <table border="0">
+                <tr>
+                        <td class="label-td" colspan="2">
+                            Paciente<label for="name" class="form-label">: </label>
+                        </td>
+                </tr>
+                <tr>
+                    <td class="label-td">
+                        <asp:TextBox ID="idcita" class="input-text" style="display: none;" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="nombre" class="input-text" placeholder="Paciente" runat="server"></asp:TextBox>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        <label for="dob" class="form-label">Nro Vacunas Covid: </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        <asp:TextBox ID="vacunas" class="input-text" placeholder="Vacunas"  runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        <label for="dob" class="form-label">Grupo Sanguineo: </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        <asp:TextBox ID="sangre" class="input-text" placeholder="Grupo Sanguineo" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        Diagnostico<label for="dob" class="form-label">: </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-td" colspan="2">
+                        <asp:TextBox ID="diagnostico" class="input-text" placeholder="Diagnostico"  runat="server"></asp:TextBox>
+                    </td>
+                          </tr>
+
+                <tr>
+                    <td colspan="2" class="auto-style1">
+                        <asp:Button ID="btn_cerrar" class="login-btn btn-primary btn" runat="server" Text="Cerrar" OnClick="btn_Cerrar_Click" />
+           
+                    </td>
+                    <td colspan="2" class="auto-style1">
+                        <asp:Button ID="btn_editar" class="login-btn btn-primary btn" runat="server" Text="Editar" OnClick="btn_Editar_Click" />
+           
+                    </td>
+
+                </tr>
+               
+
+            </table>
+                    </div>
                     <table border="0" width="100%" "="">
                             <tbody><tr>
                                 <td width=" 50%">
@@ -133,7 +242,7 @@
                         <div class="abc scroll" style="height: 600px;padding: 0;margin: 0;">
                             <table width="0%" class="sub-table scrolldown" border="0">
                                 <asp:Table ID="citas_medico" class="sub-table scrolldown" runat="server">
-                                    <asp:TableHeaderRow>
+                                    <asp:TableHeaderRow CssClass="texto">
                                         <asp:TableHeaderCell>Nro Citas</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>Paciente</asp:TableHeaderCell>
                                         <asp:TableHeaderCell>Fecha y Hora</asp:TableHeaderCell>

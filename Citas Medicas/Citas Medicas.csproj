@@ -81,6 +81,7 @@
     <Content Include="configPaciente.aspx" />
     <Content Include="docEditar.aspx" />
     <Content Include="docEliminar.aspx" />
+    <Content Include="docReporte.aspx" />
     <Content Include="docInfo.aspx" />
     <Content Include="CambiarContrasena.aspx" />
     <Content Include="EliminarCuenta.aspx" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="docEliminar.aspx.designer.cs">
       <DependentUpon>docEliminar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="docReporte.aspx.cs">
+      <DependentUpon>docReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="docReporte.aspx.designer.cs">
+      <DependentUpon>docReporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="docInfo.aspx.cs">
       <DependentUpon>docInfo.aspx</DependentUpon>
@@ -241,6 +249,9 @@
     <None Include="Connected Services\ServiceReference1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference1\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <Content Include="Properties\DataSources\Base_Datos.Cita.datasource" />
@@ -248,6 +259,7 @@
     <Content Include="Properties\DataSources\Base_Datos.Doctor.datasource" />
     <Content Include="Properties\DataSources\Base_Datos.Especialidad.datasource" />
     <Content Include="Properties\DataSources\Base_Datos.Horario.datasource" />
+    <Content Include="Properties\DataSources\Base_Datos.Reporte.datasource" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

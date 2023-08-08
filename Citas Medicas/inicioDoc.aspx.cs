@@ -23,10 +23,11 @@ namespace Citas_Medicas
             int id = (int)(Session["Id"]);
             Service1Client client = new Service1Client();
             Doctor doctor = client.Datos_Medico(id);
-          
+            Cookie.Text= usuario;
             LabelNombre.Text = doctor.Nombre + " " + doctor.Apellido;
             LabelNombre2.Text = doctor.Nombre + " " + doctor.Apellido;
             LabelCorreo.Text = doctor.Correo;
+            fechaActual.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void llenarTabla()
@@ -53,19 +54,29 @@ namespace Citas_Medicas
 
                 Button verButton = new Button();
                 verButton.Text = "Ver";
-                //verButton.Click += VerButton_Click;
+                verButton.Click += VerButton_Click;
                 Button cancelButton = new Button();
                 cancelButton.Text = "Cancelar";
-                //cancelButton.Click += CancelButton_Click;
+                cancelButton.Click += CancelButton_Click;
                 TableCell ButtonCell = new TableCell();
                 ButtonCell.Controls.Add(verButton);
                 ButtonCell.Controls.Add(cancelButton);  
                 tableRow.Cells.Add(ButtonCell);
+                tableRow.CssClass = "texto";
+
 
                 citas_medico.Rows.Add(tableRow);
                 n++;
             }
 
+        }
+        private void VerButton_Click(object sender, EventArgs e)
+        {
+            informacion.Style["display"] = "block";
+        }
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            informacion.Style["display"] = "none";
         }
     }
 }

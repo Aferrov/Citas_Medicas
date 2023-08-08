@@ -15,7 +15,43 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
 
     <title>Configuración</title>
-    
+    <script>
+        function modoOscuro() {
+            var cookies = document.cookie.split(';');
+            var darkValue = null;
+            var usu = document.getElementById('<%= Cookie.ClientID %>').innerText;;
+            var usuario = usu + '=';
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(usuario) === 0) {
+                    darkValue = cookie.substring(usuario.length);
+                    break;
+                }
+            }
+            if (darkValue == "True") {
+                document.body.style.backgroundColor = "black";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "white";
+                });
+            }
+            else
+            {
+                document.body.style.backgroundColor = "white";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "black";
+                });
+            }
+            return false;
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', modoOscuro);
+    </script>
 </head>
 
 <body>
@@ -27,11 +63,13 @@
                         <table border="0" class="profile-container">
                             <tbody><tr>
                                 <td width="30%" style="padding-left:20px">
+                                    <asp:Label ID="Cookie" runat="server" style="display: none" Text="Label"></asp:Label>
+                                    
                                     <img src="../img/logo_azul.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                <td style="padding:0px;margin:0px;">
-                                    <asp:Label ID="LabelNombre" runat="server" Text="Nombre"></asp:Label>
-                                    <asp:Label ID="LabelCorreo" runat="server" Text="Correo"></asp:Label>
+                                    <asp:Label ID="LabelNombre" CssClass="texto" runat="server" Text="Nombre"></asp:Label>
+                                    <asp:Label ID="LabelCorreo" CssClass="texto" runat="server" Text="Correo"></asp:Label>
                                 </td>
                             </tr>
                             <tr>

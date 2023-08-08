@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Base_Datos" />
+      <xsd:import schemaLocation="https://localhost:44308/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_Registrarse_InputMessage">
@@ -91,6 +92,42 @@
   <wsdl:message name="IService1_Usario_Registrado_OutputMessage">
     <wsdl:part name="parameters" element="tns:Usario_RegistradoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Medicos_Especialidad_InputMessage">
+    <wsdl:part name="parameters" element="tns:Medicos_Especialidad" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Medicos_Especialidad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Medicos_EspecialidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Nueva_Cita_InputMessage">
+    <wsdl:part name="parameters" element="tns:Nueva_Cita" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Nueva_Cita_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Nueva_CitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Cita_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update_Cita" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Update_Cita_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Update_CitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Meses_InputMessage">
+    <wsdl:part name="parameters" element="tns:Meses" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Meses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MesesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Cantidad_Citas_InputMessage">
+    <wsdl:part name="parameters" element="tns:Cantidad_Citas" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Cantidad_Citas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Cantidad_CitasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Correo_Usuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:Correo_Usuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Correo_Usuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Correo_UsuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="Registrarse">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Registrarse" message="tns:IService1_Registrarse_InputMessage" />
@@ -147,6 +184,30 @@
     <wsdl:operation name="Usario_Registrado">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Usario_Registrado" message="tns:IService1_Usario_Registrado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/Usario_RegistradoResponse" message="tns:IService1_Usario_Registrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Medicos_Especialidad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Medicos_Especialidad" message="tns:IService1_Medicos_Especialidad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Medicos_EspecialidadResponse" message="tns:IService1_Medicos_Especialidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Nueva_Cita">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Nueva_Cita" message="tns:IService1_Nueva_Cita_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Nueva_CitaResponse" message="tns:IService1_Nueva_Cita_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Cita">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Update_Cita" message="tns:IService1_Update_Cita_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Update_CitaResponse" message="tns:IService1_Update_Cita_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Meses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Meses" message="tns:IService1_Meses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/MesesResponse" message="tns:IService1_Meses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Cantidad_Citas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Cantidad_Citas" message="tns:IService1_Cantidad_Citas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Cantidad_CitasResponse" message="tns:IService1_Cantidad_Citas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Correo_Usuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Correo_Usuario" message="tns:IService1_Correo_Usuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Correo_UsuarioResponse" message="tns:IService1_Correo_Usuario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -270,6 +331,60 @@
     </wsdl:operation>
     <wsdl:operation name="Usario_Registrado">
       <soap:operation soapAction="http://tempuri.org/IService1/Usario_Registrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Medicos_Especialidad">
+      <soap:operation soapAction="http://tempuri.org/IService1/Medicos_Especialidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Nueva_Cita">
+      <soap:operation soapAction="http://tempuri.org/IService1/Nueva_Cita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Cita">
+      <soap:operation soapAction="http://tempuri.org/IService1/Update_Cita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Meses">
+      <soap:operation soapAction="http://tempuri.org/IService1/Meses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Cantidad_Citas">
+      <soap:operation soapAction="http://tempuri.org/IService1/Cantidad_Citas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Correo_Usuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/Correo_Usuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

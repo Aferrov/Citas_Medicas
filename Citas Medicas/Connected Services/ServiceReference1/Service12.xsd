@@ -24,6 +24,7 @@
       <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Especialidad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FechaNacimiento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -72,10 +73,30 @@
       <xs:element minOccurs="0" name="Anio" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Dia" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hora" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Medico" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Mes" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Minutos" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Horario" nillable="true" type="tns:Horario" />
+  <xs:complexType name="ArrayOfDoctor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Doctor" nillable="true" type="tns:Doctor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDoctor" nillable="true" type="tns:ArrayOfDoctor" />
+  <xs:complexType name="ArrayOfReporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reporte" nillable="true" type="tns:Reporte" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReporte" nillable="true" type="tns:ArrayOfReporte" />
+  <xs:complexType name="Reporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reporte" nillable="true" type="tns:Reporte" />
 </xs:schema>

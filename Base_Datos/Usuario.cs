@@ -153,5 +153,31 @@ namespace Base_Datos
             return id;
 
         }
+
+        public string Correo(int id)
+        {
+            string correo = "";
+            string connectionString = "Data Source=ARLEEN;" +
+                "Initial Catalog=CitasMedicas;Integrated Security=True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("Correo_Usuario", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Id", id);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    correo = reader["Correo"].ToString();
+                }
+                connection.Close();
+            }
+            return correo;
+
+        }
     }
 }

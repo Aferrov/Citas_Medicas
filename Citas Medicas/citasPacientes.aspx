@@ -12,9 +12,49 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
-
     <title>Nueva Cita</title>
-    
+    <script>
+        function modoOscuro() {
+            var cookies = document.cookie.split(';');
+            var darkValue = null;
+            var usu = document.getElementById('<%= Cookie.ClientID %>').innerText;;
+            var usuario = usu + '=';
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(usuario) === 0) {
+                    darkValue = cookie.substring(usuario.length);
+                    break;
+                }
+            }
+            if (darkValue == "True") {
+                document.body.style.backgroundColor = "black";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "white";
+                });
+            }
+            else {
+                document.body.style.backgroundColor = "white";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "black";
+                });
+            }
+            return false;
+
+        }
+
+        document.addEventListener('DOMContentLoaded', modoOscuro);
+    </script>
+    <style>
+        .btn-violet{
+            background-color:violet;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -26,11 +66,12 @@
                         <table border="0" class="profile-container">
                             <tbody><tr>
                                 <td width="30%" style="padding-left:20px">
+                                    <asp:Label ID="Cookie" runat="server" style="display: none" Text="Label"></asp:Label>
                                     <img src="../img/logo_azul.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <asp:Label ID="LabelNombre" runat="server" Text="Nombre"></asp:Label>
-                                    <asp:Label ID="LabelCorreo" runat="server" Text="Correo"></asp:Label>
+                                    <asp:Label ID="LabelNombre" CssClass="texto" runat="server" Text="Nombre"></asp:Label>
+                                    <asp:Label ID="LabelCorreo" CssClass="texto" runat="server" Text="Correo"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -78,7 +119,10 @@
 
     </tbody></table>
     </div>
-        
+    <div class="container">
+        <div class="fade show position-fixed top-0 start-50 translate-middle-x" role="alert" id="myAlerta" style="display: none;">
+        </div>
+    </div>    
         <div class="dash-body" style="margin-top: 15px">
         <form id="form" runat="server">
         <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;">
@@ -120,21 +164,28 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label2" runat="server" Text="Horario:"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Dia:"></asp:Label>
+                    
+                </td>
+                <td>
+                    <asp:DropDownList ID="list_Dias" runat="server" AutoPostBack="true"></asp:DropDownList>
+                </td>
+                <td>
+                    <asp:Label ID="Label3" runat="server" Text="Horario:"></asp:Label>
                     
                 </td>
                 <td>
                     <asp:DropDownList ID="list_Horarios" runat="server" AutoPostBack="true"></asp:DropDownList>
                 </td>
                 <td>
-                    <asp:Label ID="Label3" runat="server" Text="Médicos:"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text="Médicos:"></asp:Label>
                     
                 </td>
                 <td>
                     <asp:DropDownList ID="list_Doctores" runat="server"  AutoPostBack="true"></asp:DropDownList>
                 </td>
                 <td>
-                    <asp:Button ID="BtnReservar" runat="server" Text="Reservar Cita" />
+                    <asp:Button ID="BtnReservar" runat="server" Text="Reservar Cita" OnClick="BtnReservar_Click" />
                 </td>
             </tr>
             <tr>
@@ -147,14 +198,14 @@
                 <div class="schedule-container">
                   <p class="schedule-heading">Horario:</p>
                     <asp:Table ID="TableHorario" runat="server">
-                        <asp:TableHeaderRow>
-                                        <asp:TableHeaderCell>Horas</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Lunes</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Martes</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Miercoles</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Jueves</asp:TableHeaderCell>
-                                        <asp:TableHeaderCell>Viernes</asp:TableHeaderCell>
-                                    </asp:TableHeaderRow>
+                        <asp:TableHeaderRow CssClass="texto">
+                             <asp:TableHeaderCell>Horas</asp:TableHeaderCell>
+                             <asp:TableHeaderCell>Lunes</asp:TableHeaderCell>
+                             <asp:TableHeaderCell>Martes</asp:TableHeaderCell>
+                             <asp:TableHeaderCell>Miercoles</asp:TableHeaderCell>
+                             <asp:TableHeaderCell>Jueves</asp:TableHeaderCell>
+                             <asp:TableHeaderCell>Viernes</asp:TableHeaderCell>
+                        </asp:TableHeaderRow>
                     </asp:Table>
                 </div>
               </div>

@@ -15,6 +15,15 @@ namespace Citas_Medicas
     {
 
         /// <summary>
+        /// Control Cookie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Cookie;
+
+        /// <summary>
         /// Control LabelNombre.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,13 @@ namespace Citas_Medicas
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// Control list_Horarios.
+        /// Control list_Dias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList list_Horarios;
+        protected global::System.Web.UI.WebControls.DropDownList list_Dias;
 
         /// <summary>
         /// Control Label3.
@@ -94,6 +103,24 @@ namespace Citas_Medicas
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
+
+        /// <summary>
+        /// Control list_Horarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList list_Horarios;
+
+        /// <summary>
+        /// Control Label4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
         /// Control list_Doctores.

@@ -98,5 +98,36 @@ namespace Servicios
             Usuario usuario = new Usuario();
             return usuario.Usuario_Registrado(nom,ape,usu);
         }
+        public List<Doctor> Medicos_Especialidad(int especialidad)
+        {
+            Doctor doctor = new Doctor();
+            return doctor.Doctores_Especialidad(especialidad);
+        }
+
+        public void Nueva_Cita(string anio, string mes, string dia, string hora, string minutos, int medico, int paciente)
+        {
+            Cita cita= new Cita();
+            cita.Nueva_Cita(anio,mes,dia,hora,minutos,medico,paciente);
+        }
+        public void Update_Cita(int id, bool estado, string diagnostico)
+        {
+            Cita cita = new Cita();
+            cita.Update_Cita(id, estado, diagnostico);
+        }
+        public List<String> Meses()
+        {
+            Reporte reporte= new Reporte();
+            return reporte.Meses();
+        }
+        public List<Reporte> Cantidad_Citas(int id, string mes)
+        {
+            Reporte reporte = new Reporte();
+            return reporte.Cantidad_Reportes(id,mes);
+        }
+        public string Correo_Usuario(int id)
+        {
+            Usuario usu = new Usuario();
+            return usu.Correo(id);
+        }
     }
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/slick.css"> 
+    
     <title>Sistema de Citas</title>
     <link rel="icon" type="image/png" sizes="16x16" href="./img/logo.png">
     

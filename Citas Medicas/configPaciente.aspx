@@ -14,7 +14,43 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo.png">
 
     <title>Configuración</title>
-    
+    <script>
+        function modoOscuro() {
+            var cookies = document.cookie.split(';');
+            var darkValue = null;
+            var usu = document.getElementById('<%= Cookie.ClientID %>').innerText;;
+            var usuario = usu + '=';
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+
+                if (cookie.indexOf(usuario) === 0) {
+                    darkValue = cookie.substring(usuario.length);
+                    break;
+                }
+            }
+            if (darkValue == "True") {
+                document.body.style.backgroundColor = "black";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "white";
+                });
+            }
+            else
+            {
+                document.body.style.backgroundColor = "white";
+                var labels = document.querySelectorAll(".texto");
+
+                labels.forEach(function (label) {
+                    label.style.color = "black";
+                });
+            }
+            return false;
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', modoOscuro);
+    </script>
 </head>
 
 <body>
@@ -26,11 +62,12 @@
                         <table border="0" class="profile-container">
                             <tbody><tr>
                                 <td width="30%" style="padding-left:20px">
+                                    <asp:Label ID="Cookie" runat="server" style="display: none" Text="Label"></asp:Label>
                                     <img src="../img/logo_azul.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <asp:Label ID="LabelNombre" runat="server" Text="Nombre"></asp:Label>
-                                    <asp:Label ID="LabelCorreo" runat="server" Text="Correo"></asp:Label>
+                                    <asp:Label ID="LabelNombre" CssClass="texto" runat="server" Text="Nombre"></asp:Label>
+                                    <asp:Label ID="LabelCorreo" CssClass="texto" runat="server" Text="Correo"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -174,26 +211,36 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 25%;">
-                                        <a href="EliminarCuenta.aspx" class="non-style-link">
-                                            <div class="dashboard-items setting-tabs" style="padding:20px;margin:auto;width:95%;display: flex;">
-                                                <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                         <div class="dashboard-items setting-tabs" style="padding:20px;margin:auto;width:95%;display: flex;">
+                                             
+                                             <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
 
                                                 
                                                 <div>
-                                                    <div class="h1-dashboard" style="color: #ff5050;">
-                                                        Eliminar Cuenta
+                                                    <div class="h1-dashboard">
+                                                        Modo Oscuro
 
                                                     </div><br>
-                                                    <div class="h3-dashboard" style="font-size: 15px;">
-                                                        Se eliminará permanentemente su cuenta
+                                                    <div class="h3-dashboard texto" style="font-size: 15px;">
+                                                        Activa o desactiva el modo Oscuro
                                                     </div>
+                                                    <div class="h3-dashboard texto" style="font-size: 15px;">
+                                                        <asp:Label ID="Label1" runat="server" Text="Activado:"></asp:Label>
+                            
+                                                    </div>
+                                                    <form runat="server">
+                                                    <div class="h3-dashboard" style="font-size: 15px;">
+                                                        <asp:CheckBox ID="CheckDark" runat="server" OnCheckedChanged="CheckDark_CheckedChanged" AutoPostBack="true"/>
+                                                    </div>
+                                                    </form> 
                                                 </div>
-
+                                                 
                                             </div>
-                                        </a>
+                                        
                                     </td>
 
                                 </tr>
+                                
                             </table>
                         </center>
                     </td>

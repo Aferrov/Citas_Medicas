@@ -52,7 +52,7 @@ namespace Citas_Medicas
             int id = (int)(Session["Id"]);
             Service1Client client = new Service1Client();
             Doctor doc = client.Datos_Medico(id);
-
+            Cookie.Text = usuario;
             LabelNombre.Text = doc.Nombre + " " + doc.Apellido;
             LabelCorreo.Text = doc.Correo;
         }

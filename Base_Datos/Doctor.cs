@@ -139,6 +139,7 @@ namespace Base_Datos
                     cita_.Paciente = reader["Paciente"].ToString();
                     cita_.Fecha = reader["Fecha"].ToString();
                     cita_.Diagnostico = reader["Diagnostico"].ToString();
+                    cita_.Estado = Convert.ToBoolean(reader["Estado"]);
                     citas.Add(cita_);
                 }
                 connection.Close();
@@ -147,11 +148,42 @@ namespace Base_Datos
 
         }
 
+        public List<Doctor> Doctores_Especialidad(int especialidad)
+        {
+            List<Doctor> doctores= new List<Doctor>();
+            string connectionString = "Data Source=ARLEEN;" +
+                "Initial Catalog=CitasMedicas;Integrated Security=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("Select_Medico_Especialidad", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Especialidad", especialidad);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Doctor doctor= new Doctor();
+                    doctor.Id = Convert.ToInt32(reader["Id"]);
+                    doctor.Nombre = reader["Nombre"].ToString();
+                    doctor.Apellido = reader["Apellido"].ToString();
+                    doctores.Add(doctor);
+                }
+                connection.Close();
+            }
+            return doctores;
+
+        }
+
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Direccion { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Correo { get; set; }
         public string Especialidad { get; set; }
+        public string NombreCompleto => $"{Nombre} {Apellido}";
     }
 }

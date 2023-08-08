@@ -24,7 +24,7 @@ namespace Citas_Medicas
             int id = (int)(Session["Id"]);
             Service1Client client = new Service1Client();
             Paciente paciente = client.Datos_Paciente(id);
-       
+            Cookie.Text= usuario;
             LabelNombre.Text = paciente.Nombre+" "+paciente.Apellido;
             LabelNombre2.Text = paciente.Nombre + " " + paciente.Apellido;
             LabelCorreo.Text = paciente.Correo;
@@ -52,6 +52,7 @@ namespace Citas_Medicas
                 TableCell tableCell2 = new TableCell();
                 tableCell2.Text = c.Fecha;
                 tableRow.Cells.Add(tableCell2);
+                tableRow.CssClass = "texto";
 
                 citas_paciente.Rows.Add(tableRow);
                 n++;

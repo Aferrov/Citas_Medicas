@@ -13,18 +13,50 @@ namespace Citas_Medicas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadSession();
+            if(!IsPostBack)
+            {
+               loadSession(); 
+            }
+            
         }
 
         private void loadSession()
         {
             String usuario = (String)(Session["Usuario"]);
+            if(Request.Cookies[usuario]!= null)
+            {
+                String cookie = Request.Cookies[usuario].Value;
+                if (cookie=="True")
+                {
+                    CheckDark.Checked= true;
+                }
+                else
+                    CheckDark.Checked = false;
+            }
+            
             int id = (int)(Session["Id"]);
             Service1Client client = new Service1Client();
             Doctor doctor = client.Datos_Medico(id);
-
+            Cookie.Text= usuario;
             LabelNombre.Text = doctor.Nombre + " " + doctor.Apellido;
             LabelCorreo.Text = doctor.Correo;
+            fechaActual.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
+        private void createCookie(String dark)
+        {
+            String usuario = (String)(Session["Usuario"]);
+            HttpCookie cookie1 = new HttpCookie(usuario, dark);
+            Response.Cookies.Add(cookie1);
+
+        }
+        protected void CheckDark_CheckedChanged(object sender, EventArgs e)
+        {
+            String usuario = (String)(Session["Usuario"]);
+            bool activado = CheckDark.Checked;
+            createCookie(activado.ToString());
+            string script = ""+usuario+"();";
+            ClientScript.RegisterStartupScript(this.GetType(), "miFuncionScript", script, true);
         }
     }
 }
