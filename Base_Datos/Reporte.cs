@@ -56,7 +56,7 @@ namespace Base_Datos
                 while (reader.Read())
                 {
                     Reporte r = new Reporte();
-                    r.Fecha = reader["Fecha"].ToString();
+                    r.Fecha = reader["Dia"].ToString();
                     r.Cantidad = Convert.ToInt32(reader["CantidadCitas"]);
                     list.Add(r);
                 }

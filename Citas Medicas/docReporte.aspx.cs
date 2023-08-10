@@ -26,7 +26,7 @@ namespace Citas_Medicas
             
         }
 
-        private void llenarDatos()
+        public string llenarDatos()
         {
             int id = (int)(Session["Id"]);
             string mes = Meses2(list_Mes.SelectedValue);
@@ -41,8 +41,26 @@ namespace Citas_Medicas
             }
 
             string datosJson = new JavaScriptSerializer().Serialize(datosVector);
+            return datosJson;
 
-            ClientScript.RegisterStartupScript(this.GetType(), "datosScript", $"var datos = {datosJson};", true);
+        }
+        public string llenarEtiquetas()
+        {
+            int id = (int)(Session["Id"]);
+            string mes = Meses2(list_Mes.SelectedValue);
+            Service1Client client = new Service1Client();
+            IList<Reporte> report = client.Cantidad_Citas(id, mes);
+            int[] datosVector2 = new int[report.Count];
+            int c = 0;
+            foreach (var r in report)
+            {
+                datosVector2[c] = Convert.ToInt32(r.Fecha);
+                c = c + 1;
+            }
+
+            string datosJson = new JavaScriptSerializer().Serialize(datosVector2);
+            return datosJson;
+
         }
         private string Meses(string mes)
         {
@@ -155,6 +173,7 @@ namespace Citas_Medicas
             Cookie.Text = usuario;
             LabelNombre.Text = doc.Nombre + " " + doc.Apellido;
             LabelCorreo.Text = doc.Correo;
+            Fecha_Actual.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         

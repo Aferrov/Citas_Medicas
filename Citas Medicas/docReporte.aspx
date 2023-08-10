@@ -48,9 +48,76 @@
             return false;
             
         }
+        function dibujarGrafico() {
+            //console.log(datosC);
+            var datos = '<%= llenarDatos() %>';
+            var etiquetas = '<%= llenarEtiquetas() %>';
 
-        document.addEventListener('DOMContentLoaded', modoOscuro);
+            var ancho = 600;
+            var alto = 200;
+
+            var escala = d3.scaleLinear()
+                .domain([0, 20])
+                .range([0, alto]);
+
+            var lienzo = d3.select("#grafico")
+                .append("svg")
+                .attr("width", ancho)
+                .attr("height", alto + 50);
+            
+
+            lienzo.selectAll("rect")
+                .data(datos)
+                .enter()
+                .append("rect")
+                .attr("x", function (d, i) { return i * 52; })
+                .attr("y", function (d) { return alto - escala(d); })
+                .attr("width", 50)
+                .attr("height", function (d) { return escala(d); })
+                .attr("fill", "steelblue");
+
+            lienzo.selectAll(".valor")
+                .data(datos)
+                .enter()
+                .append("text")
+                .attr("class", "valor")
+                .text(function (d) { return d; })
+                .attr("x", function (d, i) { return i * 52+20; })
+                .attr("y", function (d) { return alto - escala(d)-10; })
+                .attr("text-anchor", "middle")
+                .attr("font-size", "12px")
+                .attr("fill", "black");
+
+            lienzo.selectAll(".etiqueta")
+                .data(etiquetas)
+                .enter()
+                .append("text")
+                .attr("class", "etiqueta")
+                .text(function (d) { return d; })
+                .attr("x", function (d, i) { return i * 52 ; })
+                .attr("y", alto+30)
+                .attr("text-anchor", "middle")
+                .attr("font-size", "15px")
+                .attr("fill", "black");
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            modoOscuro();
+            dibujarGrafico();
+        });
     </script>
+    
+    <style type="text/css">
+        .auto-style1 {
+            width: 9%;
+        }
+        .auto-style2 {
+            width: 681px;
+        }
+        .auto-style3 {
+            width: 77%;
+        }
+    </style>
     
 </head>
 
@@ -133,13 +200,15 @@
         <div>
             <table border="0">
                 <tbody><tr>
-                    <td width="25%">
+                    <td class="auto-style1">
                         <a href="inicioPacientes.aspx"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
                             <font class="tn-in-text">Volver</font>
                         </button></a>
+                        <div class="auto-style2">
+                        </div>
                     </td>
                     
-                    <td width="15%">
+                    <td class="auto-style3">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
                             Fecha
                         </p>
@@ -173,46 +242,6 @@
         </div>
         </div>
     </div>
-    <script>
-        console.log(datos);
-        //var datos = [10, 20, 30, 40, 50];
-        // Ancho y alto del gráfico
-        var ancho = 400;
-        var alto = 200;
-
-        // Escala para ajustar los datos al tamaño del gráfico
-        var escala = d3.scaleLinear()
-            .domain([0, 20])
-            .range([0, alto]);
-
-        // Crear el lienzo SVG para el gráfico
-        var lienzo = d3.select("#grafico")
-            .append("svg")
-            .attr("width", ancho)
-            .attr("height", alto);
-
-        // Crear las barras en el gráfico
-        lienzo.selectAll("rect")
-            .data(datos)
-            .enter()
-            .append("rect")
-            .attr("x", function (d, i) { return i * 60; }) // Espaciado entre las barras
-            .attr("y", function (d) { return alto - escala(d); })
-            .attr("width", 50) // Ancho de las barras
-            .attr("height", function (d) { return escala(d); })
-            .attr("fill", "steelblue"); // Color de las barras (puedes cambiarlo)
-
-        // Agregar etiquetas a las barras
-        lienzo.selectAll("text")
-            .data(datos)
-            .enter()
-            .append("text")
-            .text(function (d) { return d; }) // Texto de la etiqueta (en este caso, mostramos el valor de cada dato)
-            .attr("x", function (d, i) { return i * 60 + 25; }) // Posición x de la etiqueta (centrado en la barra)
-            .attr("y", function (d) { return alto - escala(d) - 5; }) // Posición y de la etiqueta (5 píxeles por encima de la barra)
-            .attr("text-anchor", "middle") // Alineación del texto en el centro
-            .attr("font-size", "12px") // Tamaño de fuente del texto
-            .attr("fill", "black"); // Color de fuente del texto
-    </script>
+    
     </body>
     </html>

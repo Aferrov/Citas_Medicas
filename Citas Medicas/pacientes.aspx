@@ -122,6 +122,15 @@
                         </a>
                     </td>
                 </tr>
+                <tr class="menu-row">
+                        <td class="menu-btn menu-icon-home">
+                            <a href="docReporte.aspx" class="non-style-link-menu">
+                                </a><div><a href="docReporte.aspx" class="non-style-link-menu">
+                                    <p class="menu-text">Reportes</p>
+                            </a>
+                        </div>
+                        </td>
+                    </tr>
                
 
     </tbody></table>

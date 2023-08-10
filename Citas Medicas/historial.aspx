@@ -143,8 +143,10 @@
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;">
 
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Mis Reservas (0)</p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Mis Reservas </p>
+                        <asp:Label ID="labelcitas" runat="server" Text="Label"></asp:Label>
                     </td>
+                    
 
                 </tr>
                 <tr>

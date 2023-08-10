@@ -36,6 +36,7 @@ namespace Citas_Medicas
             DateTime fecha = DateTime.Now;
             Service1Client client = new Service1Client();
             IList<Cita> citas = client.Citas_Paciente(id, null,null,null);
+            labelcitas.Text = "(" + citas.Count + ")";
             int n = 1;
             foreach (Cita c in citas)
             {
